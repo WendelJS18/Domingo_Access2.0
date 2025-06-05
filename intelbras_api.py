@@ -184,9 +184,7 @@ class IntelbrasAccessControlAPI:
 
     def reboot_device(self) -> str:
         try:
-            url = "http://{}/cgi-bin/magicBox.cgi?action=reboot".format(
-                str(self.ip),
-            )
+            url = f"http://{self.ip}/cgi-bin/magicBox.cgi?action=reboot"
             result = requests.get(url, auth=self.digest_auth, stream=True, timeout=20, verify=False)  # noqa
 
             if result.status_code != 200:

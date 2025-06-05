@@ -208,8 +208,7 @@ class IntelbrasAccessControlAPI:
         '''
         try:
 
-            url = "http://{}/cgi-bin/configManager.cgi?action=setConfig&PictureHttpUpload.Enable={}&PictureHttpUpload.UploadServerList[0].Address={}&PictureHttpUpload.UploadServerList[0].Port={}&PictureHttpUpload.UploadServerList[0].Uploadpath={}".format(
-                str(self.ip), str(state).lower(), str(server_address), str(port), str(path))
+            url = f"http://{self.ip}/cgi-bin/configManager.cgi?action=setConfig&PictureHttpUpload.Enable={str(state).lower()}&PictureHttpUpload.UploadServerList[0].Address={server_address}&PictureHttpUpload.UploadServerList[0].Port={port}&PictureHttpUpload.UploadServerList[0].Uploadpath={path}"
 
             result = requests.get(url, auth=self.digest_auth, stream=True, timeout=20, verify=False)  # noqa
 
@@ -225,8 +224,7 @@ class IntelbrasAccessControlAPI:
         Send a remote command to open door, default value for door is 1
         '''
         try:
-            url = "http://{}/cgi-bin/accessControl.cgi?action=openDoor&channel={}".format(
-                str(self.ip), str(door))
+            url = f"http://{self.ip}/cgi-bin/accessControl.cgi?action=openDoor&channel={door}"
 
             result = requests.get(url, auth=self.digest_auth, stream=True, timeout=20, verify=False)  # noqa
 
@@ -241,8 +239,7 @@ class IntelbrasAccessControlAPI:
         Send a remote command to open close, default value for door is 1
         '''
         try:
-            url = "http://{}/cgi-bin/accessControl.cgi?action=closeDoor&channel={}".format(
-                str(self.ip), str(door))
+            url = f"http://{self.ip}/cgi-bin/accessControl.cgi?action=closeDoor&channel={door}"
 
             result = requests.get(url, auth=self.digest_auth, stream=True, timeout=20, verify=False)  # noqa
 
@@ -260,8 +257,7 @@ class IntelbrasAccessControlAPI:
         '''
         try:
             estado = ['Normal', 'CloseAlways', 'OpenAlways']
-            url = "http://{}/cgi-bin/configManager.cgi?action=setConfig&AccessControl[0].State={}".format(
-                str(self.ip), str(estado[state]), )
+            url = f"http://{self.ip}/cgi-bin/configManager.cgi?action=setConfig&AccessControl[0].State={str(estado[state])}"
             result = requests.get(url, auth=self.digest_auth, stream=True, timeout=20, verify=False)  # noqa
 
             if result.status_code != 200:
@@ -272,8 +268,7 @@ class IntelbrasAccessControlAPI:
 
     def set_door_sensor_delay(self, CloseTimeout: int) -> str:
         try:
-            url = "http://{}/cgi-bin/configManager.cgi?action=setConfig&AccessControl[0].CloseTimeout={}".format(
-                str(self.ip), str(CloseTimeout), )
+            url = f"http://{self.ip}/cgi-bin/configManager.cgi?action=setConfig&AccessControl[0].CloseTimeout={CloseTimeout}"
             result = requests.get(url, auth=self.digest_auth, stream=True, timeout=20, verify=False)  # noqa
 
             if result.status_code != 200:
@@ -288,8 +283,7 @@ class IntelbrasAccessControlAPI:
         1 = Sempre Fechado
         '''
         try:
-            url = "http://{}/cgi-bin/configManager.cgi?action=setConfig&AccessControlGeneral.SensorType={}".format(
-                str(self.ip), str(SensorType), )
+            url = f"http://{self.ip}/cgi-bin/configManager.cgi?action=setConfig&AccessControlGeneral.SensorType={SensorType}"
             result = requests.get(url, auth=self.digest_auth, stream=True, timeout=20, verify=False)  # noqa
 
             if result.status_code != 200:

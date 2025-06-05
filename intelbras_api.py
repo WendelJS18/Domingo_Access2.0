@@ -172,8 +172,7 @@ class IntelbrasAccessControlAPI:
             new_mask: str,
             dhcp: bool) -> str:
         try:
-            url = "http://{}/cgi-bin/configManager.cgi?action=setConfig&Network.eth0.IPAddress={}&Network.eth0.DefaultGateway={}&Network.eth0.SubnetMask={}&Network.eth0.DhcpEnable={}".format(
-                str(self.ip), str(new_ip), str(new_gateway), str(new_mask), str(dhcp).lower(), )
+            url = f"http://{self.ip}/cgi-bin/configManager.cgi?action=setConfig&Network.eth0.IPAddress={new_ip}&Network.eth0.DefaultGateway={new_gateway}&Network.eth0.SubnetMask={new_mask}&Network.eth0.DhcpEnable={ str(dhcp).lower()}"
 
             result = requests.get(url, auth=self.digest_auth, stream=True, timeout=20, verify=False)  # noqa
 
@@ -830,4 +829,4 @@ class IntelbrasAccessControlAPI:
 
 # api = IntelbrasAccessControlAPI('10.1.35.156', 'admin', 'acesso1234')
 
-# api.get_current_time() QUEM LE É 
+# api.get_current_time() QUEM LE É

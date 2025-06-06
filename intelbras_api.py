@@ -294,8 +294,7 @@ class IntelbrasAccessControlAPI:
 
     def set_door_name(self, Name: str) -> str:
         try:
-            url = "http://{}/cgi-bin/configManager.cgi?action=setConfig&AccessControl[0].Name={}".format(
-                str(self.ip), str(Name), )
+            url = f"http://{self.ip}/cgi-bin/configManager.cgi?action=setConfig&AccessControl[0].Name={Name}"
             result = requests.get(url, auth=self.digest_auth, stream=True, timeout=20, verify=False)  # noqa
 
             if result.status_code != 200:
@@ -306,8 +305,9 @@ class IntelbrasAccessControlAPI:
 
     def enable_door_sensor(self, SensorEnable: bool) -> str:
         try:
-            url = "http://{}/cgi-bin/configManager.cgi?action=setConfig&AccessControl[0].SensorEnable={}".format(
-                str(self.ip), str(SensorEnable).lower(), )
+
+
+            url = f"http://{self.ip}/cgi-bin/configManager.cgi?action=setConfig&AccessControl[0].SensorEnable={str(SensorEnable).lower()}" 
             result = requests.get(url, auth=self.digest_auth, stream=True, timeout=20, verify=False)  # noqa
 
             if result.status_code != 200:

@@ -1,5 +1,6 @@
 import os
 import cv2
+import traceback
 from flask import Flask, request, jsonify
 from datetime import datetime
 from intelbras_api import IntelbrasAccessControlAPI
@@ -7,25 +8,25 @@ from werkzeug.utils import secure_filename
 
 app = Flask(__name__)
 
+# Diretório onde as imagens serão salvas
+save_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "s_files")
+os.makedirs(save_dir, exist_ok=True)
 
-USE_MOCK = False
+USE_MOCK = True
 DEVICE_IP = 'localhost:8080' if USE_MOCK else '192.168.0.50'
 USERNAME = 'admin'
 PASSWORD = 'Esdo2025'
-
-
+ 
 api = IntelbrasAccessControlAPI(DEVICE_IP, USERNAME, PASSWORD)
 
-
-
-
+ 
 @app.route('/ping_dispositivo', methods=['POST'])
 def ping_dispositivo():
     try:
         resultado = api.get_current_time()
         return jsonify({'status': 'sucesso', 'mensagem': resultado}), 200
     except Exception as e:
-        print("Erro detalhado:", e)
+        traceback.print_exc()
         return jsonify({'status': 'erro', 'mensagem': str(e)}), 500
 
 
@@ -73,11 +74,7 @@ def upload_foto():
 
         if not user_id:
             return jsonify({'status': 'erro', 'mensagem': 'O campo "user_id" é obrigatório.'}), 400
-
-        # Cria diretório se não existir
-        if not os.path.exists(save_dir):
-            os.makedirs(save_dir)
-
+ 
         # Nome seguro do arquivo
         filename = secure_filename(f"user_{user_id}.jpg")
         filepath = os.path.join(save_dir, filename)

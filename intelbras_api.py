@@ -306,8 +306,7 @@ class IntelbrasAccessControlAPI:
     def enable_door_sensor(self, SensorEnable: bool) -> str:
         try:
 
-
-            url = f"http://{self.ip}/cgi-bin/configManager.cgi?action=setConfig&AccessControl[0].SensorEnable={str(SensorEnable).lower()}" 
+            url = f"http://{self.ip}/cgi-bin/configManager.cgi?action=setConfig&AccessControl[0].SensorEnable={str(SensorEnable).lower()}"
             result = requests.get(url, auth=self.digest_auth, stream=True, timeout=20, verify=False)  # noqa
 
             if result.status_code != 200:
@@ -318,8 +317,7 @@ class IntelbrasAccessControlAPI:
 
     def set_door_unlock_interval(self, UnlockHoldInterval: int) -> str:
         try:
-            url = "http://{}/cgi-bin/configManager.cgi?action=setConfig&AccessControl[0].UnlockHoldInterval={}".format(
-                str(self.ip), str(UnlockHoldInterval), )
+            url = f"http://{self.ip}/cgi-bin/configManager.cgi?action=setConfig&AccessControl[0].UnlockHoldInterval={UnlockHoldInterval}"
             result = requests.get(url, auth=self.digest_auth, stream=True, timeout=20, verify=False)  # noqa
 
             if result.status_code != 200:
@@ -330,8 +328,7 @@ class IntelbrasAccessControlAPI:
 
     def enable_exit_button(self, ButtonExitEnable: bool) -> str:
         try:
-            url = "http://{}/cgi-bin/configManager.cgi?action=setConfig&AccessControlGeneral.ButtonExitEnable={}".format(
-                str(self.ip), str(ButtonExitEnable).lower(), )
+            url = f"http://{self.ip}/cgi-bin/configManager.cgi?action=setConfig&AccessControlGeneral.ButtonExitEnable={str(ButtonExitEnable).lower()}"
             result = requests.get(url, auth=self.digest_auth, stream=True, timeout=20, verify=False)  # noqa
 
             if result.status_code != 200:
@@ -342,8 +339,7 @@ class IntelbrasAccessControlAPI:
 
     def set_door_verification_method(self, Method: int) -> str:
         try:
-            url = "http://{}/cgi-bin/configManager.cgi?action=setConfig&AccessControl[0].Method={}".format(
-                str(self.ip), str(Method), )
+            url = f"http://{self.ip}/cgi-bin/configManager.cgi?action=setConfig&AccessControl[0].Method={Method}"
             result = requests.get(url, auth=self.digest_auth, stream=True, timeout=20, verify=False)  # noqa
             if result.status_code != 200:
                 raise Exception()
@@ -353,8 +349,7 @@ class IntelbrasAccessControlAPI:
 
     def set_open_timezone(self, OpenAlwaysTime: int) -> str:
         try:
-            url = "http://{}/cgi-bin/configManager.cgi?action=setConfig&AccessControl[0].OpenAlwaysTime={}".format(
-                str(self.ip), str(OpenAlwaysTime), )
+            url = f"http://{self.ip}/cgi-bin/configManager.cgi?action=setConfig&AccessControl[0].OpenAlwaysTime={OpenAlwaysTime}"
             result = requests.get(url, auth=self.digest_auth, stream=True, timeout=20, verify=False)  # noqa
             if result.status_code != 200:
                 raise Exception()
@@ -364,8 +359,7 @@ class IntelbrasAccessControlAPI:
 
     def set_close_timezone(self, CloseAlwaysTime: int) -> str:
         try:
-            url = "http://1{}/cgi-bin/configManager.cgi?action=setConfig&AccessControl[0].CloseAlwaysTime={}".format(
-                str(self.ip), str(CloseAlwaysTime), )
+            url = f"http://1{self.ip}/cgi-bin/configManager.cgi?action=setConfig&AccessControl[0].CloseAlwaysTime={CloseAlwaysTime}"
             result = requests.get(url, auth=self.digest_auth, stream=True, timeout=20, verify=False)  # noqa
             if result.status_code != 200:
                 raise Exception()
@@ -375,8 +369,7 @@ class IntelbrasAccessControlAPI:
 
     def get_door_config(self) -> dict:
         try:
-            url = "http://{}/cgi-bin/configManager.cgi?action=getConfig&name=AccessControlGeneral".format(
-                str(self.ip), )
+            url = f"http://{self.ip}/cgi-bin/configManager.cgi?action=getConfig&name=AccessControlGeneral"
             result = requests.get(url, auth=self.digest_auth, stream=True, timeout=20, verify=False)  # noqa
             raw = result.text.strip().splitlines()
 
@@ -392,8 +385,7 @@ class IntelbrasAccessControlAPI:
         Return Close or Open to Door State
         '''
         try:
-            url = "http://{}/cgi-bin/accessControl.cgi?action=getDoorStatus&channel=1".format(
-                str(self.ip), str(door))
+            url = f"http://{self.ip}/cgi-bin/accessControl.cgi?action=getDoorStatus&channel={door}"
             result = requests.get(url, auth=self.digest_auth, stream=True, timeout=20, verify=False)  # noqa
             raw = result.text.strip().splitlines()
 
@@ -409,10 +401,9 @@ class IntelbrasAccessControlAPI:
 
     def set_access_control_door_enable(self, state: bool) -> str:
         try:
-            url = "http://{}/cgi-bin/configManager.cgi?action=setConfig&AccessControl[0].Enable={}".format(
-                str(self.ip), str(state).lower())
+            url = f"http://{self.ip}/cgi-bin/configManager.cgi?action=setConfig&AccessControl[0].Enable={str(state).lower()}"
             result = requests.get(url, auth=self.digest_auth, stream=True, timeout=20, verify=False)  # noqa
-
+            
             if result.status_code != 200:
                 raise Exception()
             return str(result.text)
@@ -421,8 +412,7 @@ class IntelbrasAccessControlAPI:
 
     def stop_alarm_v2(self) -> str:
         try:
-            url = "http://{}/cgi-bin/configManager.cgi?action=setConfig&AlarmStop.stopAlarm=true".format(
-                str(self.ip), )
+            url = f"http://{self.ip}/cgi-bin/configManager.cgi?action=setConfig&AlarmStop.stopAlarm=true"
             result = requests.get(url, auth=self.digest_auth, stream=True, timeout=20, verify=False)  # noqa
 
             if result.status_code != 200:
@@ -438,8 +428,7 @@ class IntelbrasAccessControlAPI:
         This command delete all user and credential incluse in device
         '''
         try:
-            url = "http://{}/cgi-bin/recordUpdater.cgi?action=clear&name=AccessControlCard".format(
-                str(self.ip))
+            url = f"http://{self.ip}/cgi-bin/recordUpdater.cgi?action=clear&name=AccessControlCard"
             result = requests.get(url, auth=self.digest_auth, stream=True, timeout=20, verify=False)  # noqa
 
             if result.status_code != 200:
@@ -454,9 +443,7 @@ class IntelbrasAccessControlAPI:
         This command delete all user and credential incluse in device
         '''
         try:
-            url = "http://{}/cgi-bin/AccessUser.cgi?action=removeAll".format(
-                str(self.ip)
-            )
+            url = f"http://{self.ip}/cgi-bin/AccessUser.cgi?action=removeAll"
             result = requests.get(url, auth=self.digest_auth, stream=True, timeout=20, verify=False)  # noqa
 
             if result.status_code != 200:
@@ -491,8 +478,18 @@ class IntelbrasAccessControlAPI:
         end_time_str = ValidDateEnd.strftime(
             '%Y%m%d') + '%20' + ValidDateEnd.strftime('%H%M%S')
         try:
-            url = "http://{}/cgi-bin/recordUpdater.cgi?action=insert&name=AccessControlCard&CardNo={}&CardStatus={}&CardName={}&UserID={}&Password={}&CardType={}&Doors[0]={}".format(
-                str(self.ip), str(CardNo).upper(), str(CardStatus), str(CardName), str(UserID), str(Password), str(CardType), str(Doors), str(start_time_str), str(end_time_str), )
+            url = (
+            f"http://{self.ip}/cgi-bin/recordUpdater.cgi?action=insert&name=AccessControlCard"
+            f"&CardNo={CardNo.upper()}"
+            f"&CardStatus={CardStatus}"
+            f"&CardName={CardName}"
+            f"&UserID={UserID}"
+            f"&Password={Password}"
+            f"&CardType={CardType}"
+            f"&Doors[0]={Doors}"
+            f"&ValidDateStart={start_time_str}"
+            f"&ValidDateEnd={end_time_str}"
+        )
             result = requests.get(url, auth=self.digest_auth, stream=True, timeout=20, verify=False)  # noqa
 
             raw = result.text.strip().splitlines()
@@ -546,8 +543,7 @@ class IntelbrasAccessControlAPI:
                     ]
                 }''')
         try:
-            url = "http://{}/cgi-bin/AccessUser.cgi?action=insertMulti".format(
-                self.ip)
+            url = f"http://{self.ip}/cgi-bin/AccessUser.cgi?action=insertMulti"
             headers = {"Content-TYpe": "application/json"}
             result = requests.post(
                 url,
@@ -607,7 +603,7 @@ class IntelbrasAccessControlAPI:
                     ]
                 }''')
         try:
-            url = "http://{self.ip}/cgi-bin/AccessUser.cgi?action=updateMulti"
+            url = f"http://{self.ip}/cgi-bin/AccessUser.cgi?action=updateMulti"
 
             result = requests.get(url, data=UserList, auth=self.digest_auth, stream=True, timeout=20, verify=False)  # noqa
 
@@ -619,8 +615,7 @@ class IntelbrasAccessControlAPI:
 
     def get_all_users(self, count: int) -> dict:
         try:
-            url = "http://{}/cgi-bin/recordFinder.cgi?action=doSeekFind&name=AccessControlCard&count={}".format(
-                str(self.ip), str(count), )
+            url = f"http://{self.ip}/cgi-bin/recordFinder.cgi?action=doSeekFind&name=AccessControlCard&count={count}"
             result = requests.get(url, auth=self.digest_auth, stream=True, timeout=20, verify=False)  # noqa
             raw = result.text.strip().splitlines()
 
@@ -633,8 +628,7 @@ class IntelbrasAccessControlAPI:
 
     def get_users_count(self) -> dict:
         try:
-            url = "http://{}/cgi-bin/recordFinder.cgi?action=getQuerySize&name=AccessUserInfo".format(
-                str(self.ip), )
+            url = f"http://{self.ip}/cgi-bin/recordFinder.cgi?action=getQuerySize&name=AccessUserInfo"
             result = requests.get(url, auth=self.digest_auth, stream=True, timeout=20, verify=False)  # noqa
             raw = result.text.strip().splitlines()
 
@@ -647,7 +641,7 @@ class IntelbrasAccessControlAPI:
 
     def get_user_cardno(self, CardNoList: str) -> dict:
         try:
-            url = "http://{}/cgi-bin/AccessCard.cgi?action=list&CardNoList[0]={}".format(
+            url = f"http://{self.ip}/cgi-bin/AccessCard.cgi?action=list&CardNoList[0]={str(CardNoList).upper()}".format(
                 str(self.ip), str(CardNoList).upper(), )
             result = requests.get(url, auth=self.digest_auth, stream=True, timeout=20, verify=False)  # noqa
             raw = result.text.strip().splitlines()
@@ -661,8 +655,7 @@ class IntelbrasAccessControlAPI:
 
     def get_user_recno(self, recno: int) -> dict:
         try:
-            url = "http://{}/cgi-bin/recordUpdater.cgi?action=get&name=AccessControlCard&recno={}".format(
-                str(self.ip), str(recno), )
+            url = f"http://{self.ip}/cgi-bin/recordUpdater.cgi?action=get&name=AccessControlCard&recno={recno}"
             result = requests.get(url, auth=self.digest_auth, stream=True, timeout=20, verify=False)  # noqa
             raw = result.text.strip().splitlines()
 
@@ -675,8 +668,7 @@ class IntelbrasAccessControlAPI:
 
     def get_user_id(self, UserIDList: int) -> dict:
         try:
-            url = "http://{}/cgi-bin/AccessUser.cgi?action=list&UserIDList[0]={}".format(
-                str(self.ip), str(UserIDList), )
+            url = f"http://{self.ip}/cgi-bin/AccessUser.cgi?action=list&UserIDList[0]={UserIDList}"
             result = requests.get(url, auth=self.digest_auth, stream=True, timeout=20, verify=False)  # noqa
             raw = result.text.strip().splitlines()
 
@@ -689,8 +681,7 @@ class IntelbrasAccessControlAPI:
 
     def set_remove_users_all(self) -> dict:
         try:
-            url = "http://{}/cgi-bin/recordUpdater.cgi?action=clear&name=AccessControlCard".format(
-                str(self.ip), )
+            url = f"http://{self.ip}/cgi-bin/recordUpdater.cgi?action=clear&name=AccessControlCard"
             result = requests.get(url, auth=self.digest_auth, stream=True, timeout=20, verify=False)  # noqa
             raw = result.text.strip().splitlines()
 
@@ -703,8 +694,7 @@ class IntelbrasAccessControlAPI:
 
     def set_remove_users_recno(self, recno: int) -> dict:
         try:
-            url = "http://{}/cgi-bin/recordUpdater.cgi?action=remove&name=AccessControlCard&recno={}".format(
-                str(self.ip), str(recno), )
+            url = f"http://{self.ip}/cgi-bin/recordUpdater.cgi?action=remove&name=AccessControlCard&recno={recno}"
             result = requests.get(url, auth=self.digest_auth, stream=True, timeout=20, verify=False)  # noqa
             raw = result.text.strip().splitlines()
 
@@ -717,8 +707,7 @@ class IntelbrasAccessControlAPI:
 
     def set_remove_users_id(self, UserIDList: int) -> dict:
         try:
-            url = "http://{}/cgi-bin/AccessUser.cgi?action=removeMulti&UserIDList[0]={}".format(
-                str(self.ip), str(UserIDList), )
+            url = f"http://{self.ip}/cgi-bin/AccessUser.cgi?action=removeMulti&UserIDList[0]={UserIDList}"
             result = requests.get(url, auth=self.digest_auth, stream=True, timeout=20, verify=False)  # noqa
             raw = result.text.strip().splitlines()
 
@@ -755,12 +744,11 @@ class IntelbrasAccessControlAPI:
                 }''')
 
         try:
-            url = "http://{}/cgi-bin/AccessCard.cgi?action=insertMulti".format(
-                str(self.ip),
-                str(UserID),
-                str(CardNo).upper(),
-                str(CardType),
-                str(CardStatus),
+            url = f"http://{self.ip}/cgi-bin/AccessCard.cgi?action=insertMulti".format(
+                f"&UserID = {UserID}"
+                f"&CardNo = {(CardNo).upper()}"
+                f"&CardType = {CardNo}"
+                f"&CardStatus = {CardStatus}"
             )
             result = requests.post(url, data=CardList, auth=self.digest_auth, stream=True, timeout=20, verify=False)  # noqa
 
@@ -792,8 +780,7 @@ class IntelbrasAccessControlAPI:
                 str(path_event),
             )
 
-            url_keepalive_config = "http://{}/cgi-bin/configManager.cgi?action=setConfig&Intelbras_ModeCfg.DeviceMode={}&Intelbras_ModeCfg.KeepAlive.Enable={}&Intelbras_ModeCfg.KeepAlive.Interval={}&Intelbras_ModeCfg.KeepAlive.Path={}&Intelbras_ModeCfg.KeepAlive.TimeOut={}&Intelbras_ModeCfg.RemoteCheckTimeout={}".format(
-                str(self.ip), str(device_mode), str(enable_keepalive), str(interval_keepalive), str(path_keepalive), str(timeout_keepalive), str(timeout_response), )
+            url_keepalive_config = f"http://{self.ip}/cgi-bin/configManager.cgi?action=setConfig&Intelbras_ModeCfg.DeviceMode={device_mode}&Intelbras_ModeCfg.KeepAlive.Enable={enable_keepalive}&Intelbras_ModeCfg.KeepAlive.Interval={interval_keepalive}&Intelbras_ModeCfg.KeepAlive.Path={path_keepalive}&Intelbras_ModeCfg.KeepAlive.TimeOut={timeout_keepalive}&Intelbras_ModeCfg.RemoteCheckTimeout={timeout_response}"
 
             result_events = requests.get(url_server_config, auth=self.digest_auth, stream=True, timeout=20, verify=False)  # noqa
 

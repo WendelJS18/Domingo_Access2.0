@@ -5,8 +5,13 @@ from flask import Flask, request, jsonify
 from datetime import datetime
 from intelbras_api import IntelbrasAccessControlAPI
 from werkzeug.utils import secure_filename
+from flask_cors import CORS
 
-app = Flask(__name__)
+
+app = Flask(__name__) 
+CORS(app)
+
+
 
 # Diretório onde as imagens serão salvas
 save_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "s_files")
@@ -126,7 +131,46 @@ def recortar_rosto():
 
     except Exception as e:
         return jsonify({'status': 'erro', 'mensagem': str(e)}), 500
+@app.route('/enviar_rosto', methods=['POST'])
+def enviar_rosto():
+    try:
+        data = request.get_json()
+        user_id = data.get('user_id')
 
+        if not user_id:
+            return jsonify({'status': 'erro', 'mensagem': 'O campo "user_id" é obrigatório.'}), 400
 
+        filename = f"user_{user_id}.jpg"
+        filepath = os.path.join("s_files", filename)
+
+        if not os.path.exists(filepath):
+            return jsonify({'status': 'erro', 'mensagem': 'Arquivo não encontrado para envio.'}), 404
+
+        resultado = api.send_face_to_device(user_id=int(user_id), image_path=filepath)
+        return jsonify({'status': 'sucesso', 'mensagem': resultado}), 200
+
+    except Exception as e:
+        return jsonify({'status': 'erro', 'mensagem': str(e)}), 500
+@app.route('/enviar_foto_dispositivo', methods=['POST'])
+def enviar_foto_dispositivo():
+    try:
+        user_id = request.json.get('user_id')
+
+        if not user_id:
+            return jsonify({'status': 'erro', 'mensagem': 'O campo "user_id" é obrigatório.'}), 400
+
+        filename = f"user_{user_id}.jpg"
+        filepath = os.path.join(save_dir, filename)
+
+        if not os.path.exists(filepath):
+            return jsonify({'status': 'erro', 'mensagem': 'Imagem recortada não encontrada.'}), 404
+
+        resultado = api.send_face_to_device(user_id, filepath)
+
+        return jsonify({'status': 'sucesso', 'mensagem': resultado}), 200
+
+    except Exception as e:
+        return jsonify({'status': 'erro', 'mensagem': str(e)}), 500
+    
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=5000)

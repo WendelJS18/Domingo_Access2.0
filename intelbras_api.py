@@ -403,7 +403,7 @@ class IntelbrasAccessControlAPI:
         try:
             url = f"http://{self.ip}/cgi-bin/configManager.cgi?action=setConfig&AccessControl[0].Enable={str(state).lower()}"
             result = requests.get(url, auth=self.digest_auth, stream=True, timeout=20, verify=False)  # noqa
-            
+
             if result.status_code != 200:
                 raise Exception()
             return str(result.text)
@@ -479,17 +479,17 @@ class IntelbrasAccessControlAPI:
             '%Y%m%d') + '%20' + ValidDateEnd.strftime('%H%M%S')
         try:
             url = (
-            f"http://{self.ip}/cgi-bin/recordUpdater.cgi?action=insert&name=AccessControlCard"
-            f"&CardNo={CardNo.upper()}"
-            f"&CardStatus={CardStatus}"
-            f"&CardName={CardName}"
-            f"&UserID={UserID}"
-            f"&Password={Password}"
-            f"&CardType={CardType}"
-            f"&Doors[0]={Doors}"
-            f"&ValidDateStart={start_time_str}"
-            f"&ValidDateEnd={end_time_str}"
-        )
+                f"http://{self.ip}/cgi-bin/recordUpdater.cgi?action=insert&name=AccessControlCard"
+                f"&CardNo={CardNo.upper()}"
+                f"&CardStatus={CardStatus}"
+                f"&CardName={CardName}"
+                f"&UserID={UserID}"
+                f"&Password={Password}"
+                f"&CardType={CardType}"
+                f"&Doors[0]={Doors}"
+                f"&ValidDateStart={start_time_str}"
+                f"&ValidDateEnd={end_time_str}"
+            )
             result = requests.get(url, auth=self.digest_auth, stream=True, timeout=20, verify=False)  # noqa
 
             raw = result.text.strip().splitlines()
@@ -805,7 +805,25 @@ class IntelbrasAccessControlAPI:
             else:
                 data["NaN"] = "NaN"
         return data
+    
+    def send_face_to_device(self, user_id: int, image_path: str) -> str:
+    
+      try:
+        url = f"http://{self.ip}/cgi-bin/faceRecognition.cgi?action=uploadFaceImage&UserID={user_id}"
 
+        with open(image_path, 'rb') as img_file:
+            files = {'FaceImage': (f"user_{user_id}.jpg", img_file, 'image/jpeg')}
+            result = requests.post(url, files=files, auth=self.digest_auth, timeout=20, verify=False)
+
+        if result.status_code != 200:
+            raise Exception(f"Falha ao enviar rosto: {result.status_code} - {result.text}")
+        return result.text
+
+      except Exception as e:
+        raise Exception(f"ERROR - During Upload Face Image: {e}")
+    
+
+            
 # api = IntelbrasAccessControlAPI('10.1.35.156', 'admin', 'acesso1234')
 
-# api.get_current_time() QUEM LE É
+# api.get_current_time()

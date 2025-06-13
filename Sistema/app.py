@@ -17,7 +17,7 @@ CORS(app)
 save_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "s_files")
 os.makedirs(save_dir, exist_ok=True)
 
-USE_MOCK = True
+USE_MOCK = False
 DEVICE_IP = 'localhost:8080' if USE_MOCK else '192.168.0.50'
 USERNAME = 'admin'
 PASSWORD = 'Esdo2025'
@@ -80,7 +80,7 @@ def upload_foto():
         if not user_id:
             return jsonify({'status': 'erro', 'mensagem': 'O campo "user_id" é obrigatório.'}), 400
  
-        # Nome seguro do arquivo
+        
         filename = secure_filename(f"user_{user_id}.jpg")
         filepath = os.path.join(save_dir, filename)
 
@@ -131,6 +131,7 @@ def recortar_rosto():
 
     except Exception as e:
         return jsonify({'status': 'erro', 'mensagem': str(e)}), 500
+
 @app.route('/enviar_rosto', methods=['POST'])
 def enviar_rosto():
     try:
@@ -151,6 +152,7 @@ def enviar_rosto():
 
     except Exception as e:
         return jsonify({'status': 'erro', 'mensagem': str(e)}), 500
+
 @app.route('/enviar_foto_dispositivo', methods=['POST'])
 def enviar_foto_dispositivo():
     try:

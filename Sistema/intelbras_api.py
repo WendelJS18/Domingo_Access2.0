@@ -824,6 +824,6 @@ class IntelbrasAccessControlAPI:
     
 
             
-# api = IntelbrasAccessControlAPI('10.1.35.156', 'admin', 'acesso1234')
+
 
 # api.get_current_time()

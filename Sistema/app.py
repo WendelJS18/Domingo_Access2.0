@@ -13,9 +13,10 @@ CORS(app)
 
 
 
-# Diretório onde as imagens serão salvas
+
 save_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "s_files")
-os.makedirs(save_dir, exist_ok=True)
+if not os.path.exists(save_dir):
+    os.makedirs(save_dir)
 
 USE_MOCK = False
 DEVICE_IP = 'localhost:8080' if USE_MOCK else '192.168.0.50'
@@ -23,7 +24,6 @@ USERNAME = 'admin'
 PASSWORD = 'Esdo2025'
  
 api = IntelbrasAccessControlAPI(DEVICE_IP, USERNAME, PASSWORD)
-
  
 @app.route('/ping_dispositivo', methods=['POST'])
 def ping_dispositivo():
@@ -43,9 +43,9 @@ def home():
 @app.route('/cadastrar_usuario', methods=['POST'])
 def cadastrar_usuario():
     try:
+        user_id = gerar_user_id
         data = request.get_json()
         nome = data.get('nome')
-        user_id = data.get('user_id')
         senha = data.get('senha') or '1234'
         inicio = data.get('inicio') or '2025-01-01 00:00:00'
         fim = data.get('fim') or '2030-01-01 00:00:00'
@@ -67,109 +67,48 @@ def cadastrar_usuario():
         print("Erro detalhado: " + str(e))
         return jsonify({'status': 'erro', 'mensagem': str(e)}), 500
 
+def gerar_user_id():
+    now = datetime.now()
+    return int(now.strftime("%Y%m%d%H%M%S"))   
 
-@app.route('/upload_foto', methods=['POST'])
-def upload_foto():
+@app.route('/listar_usuarios', methods=['GET'])
+def listar_usuarios():
+    try:
+        resultado = api.get_all_users(count=10)
+        return jsonify({'status': 'sucesso', 'usuarios': resultado}), 200
+    except Exception as e:
+        print("Erro Detalhado", e)
+        return jsonify({'status': 'Erro', 'mensagem': str(e)}), 500
+
+@app.route('/deletar_todos_usuarios', methods=['DELETE'])
+def deletar_todos_usuarios():
+    try:
+        resultado = api.delete_all_users_v2()
+        return jsonify({'status': 'sucesso', 'mensagem': resultado})
+    except Exception as e:
+        return jsonify({'status': 'Erro', 'mnesagem': str(e)})
+
+@app.route('/validar_biometria', methods=['POST'])
+def validar_biometria():
     try:
         if 'imagem' not in request.files:
-            return jsonify({'status': 'erro', 'mensagem': 'Nenhum arquivo enviado com chave "imagem".'}), 400
+            return jsonify({'status': 'erro', 'mensagem': 'Imagem não encontrada na requisição.'}), 400
 
         imagem = request.files['imagem']
-        user_id = request.form.get('user_id')
-
-        if not user_id:
-            return jsonify({'status': 'erro', 'mensagem': 'O campo "user_id" é obrigatório.'}), 400
- 
-        
-        filename = secure_filename(f"user_{user_id}.jpg")
-        filepath = os.path.join(save_dir, filename)
-
+        filename = secure_filename("validacao_temp.jpg")
+        filepath = os.path.join("s_files", filename)
         imagem.save(filepath)
 
-        return jsonify({'status': 'sucesso', 'mensagem': 'Imagem salva com sucesso.', 'caminho': filepath}), 201
-
-    except Exception as e:
-        return jsonify({'status': 'erro', 'mensagem': str(e)}), 500
-
-
-@app.route('/recortar_rosto', methods=['POST'])
-def recortar_rosto():
-    try:
-        user_id = request.json.get('user_id')
-
-        if not user_id:
-            return jsonify({'status': 'erro', 'mensagem': 'O campo "user_id" é obrigatório.'}), 400
-
-        filename = f"user_{user_id}.jpg"
-        filepath = os.path.join(save_dir, filename)
-
-        if not os.path.exists(filepath):
-            return jsonify({'status': 'erro', 'mensagem': 'Imagem não encontrada.'}), 404
-
-        # Carregar imagem
-        imagem = cv2.imread(filepath)
-        gray = cv2.cvtColor(imagem, cv2.COLOR_BGR2GRAY)
-
-        # Classificador Haar
-        cascade_path = cv2.data.haarcascades + 'haarcascade_frontalface_default.xml'
-        face_cascade = cv2.CascadeClassifier(cascade_path)
-
-        faces = face_cascade.detectMultiScale(
-            gray, scaleFactor=1.1, minNeighbors=5)
+        # Carrega e tenta identificar rosto
+        img = cv2.imread(filepath)
+        gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+        face_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_frontalface_default.xml')
+        faces = face_cascade.detectMultiScale(gray, scaleFactor=1.1, minNeighbors=5)
 
         if len(faces) == 0:
             return jsonify({'status': 'erro', 'mensagem': 'Nenhum rosto detectado.'}), 422
 
-        # Assumir primeiro rosto encontrado
-        (x, y, w, h) = faces[0]
-        rosto = imagem[y:y + h, x:x + w]
-
-        # Salvar rosto recortado no mesmo local
-        cv2.imwrite(filepath, rosto)
-
-        return jsonify({'status': 'sucesso', 'mensagem': 'Rosto recortado com sucesso.'}), 200
-
-    except Exception as e:
-        return jsonify({'status': 'erro', 'mensagem': str(e)}), 500
-
-@app.route('/enviar_rosto', methods=['POST'])
-def enviar_rosto():
-    try:
-        data = request.get_json()
-        user_id = data.get('user_id')
-
-        if not user_id:
-            return jsonify({'status': 'erro', 'mensagem': 'O campo "user_id" é obrigatório.'}), 400
-
-        filename = f"user_{user_id}.jpg"
-        filepath = os.path.join("s_files", filename)
-
-        if not os.path.exists(filepath):
-            return jsonify({'status': 'erro', 'mensagem': 'Arquivo não encontrado para envio.'}), 404
-
-        resultado = api.send_face_to_device(user_id=int(user_id), image_path=filepath)
-        return jsonify({'status': 'sucesso', 'mensagem': resultado}), 200
-
-    except Exception as e:
-        return jsonify({'status': 'erro', 'mensagem': str(e)}), 500
-
-@app.route('/enviar_foto_dispositivo', methods=['POST'])
-def enviar_foto_dispositivo():
-    try:
-        user_id = request.json.get('user_id')
-
-        if not user_id:
-            return jsonify({'status': 'erro', 'mensagem': 'O campo "user_id" é obrigatório.'}), 400
-
-        filename = f"user_{user_id}.jpg"
-        filepath = os.path.join(save_dir, filename)
-
-        if not os.path.exists(filepath):
-            return jsonify({'status': 'erro', 'mensagem': 'Imagem recortada não encontrada.'}), 404
-
-        resultado = api.send_face_to_device(user_id, filepath)
-
-        return jsonify({'status': 'sucesso', 'mensagem': resultado}), 200
+        return jsonify({'status': 'sucesso', 'mensagem': 'Rosto validado com sucesso.'}), 200
 
     except Exception as e:
         return jsonify({'status': 'erro', 'mensagem': str(e)}), 500

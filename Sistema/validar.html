@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Validar Biometria Facial</title>
+</head>
+
+<body>
+    <h2>Validação de Biometria Facial</h2>
+    <video id="video" width="400" autoplay></video>
+    <br>
+    <button onclick="capturar()">Validar Rosto</button>
+
+    <script>
+        const video = document.getElementById('video');
+        navigator.mediaDevices.getUserMedia({ video: true })
+            .then(stream => video.srcObject = stream)
+            .catch(error => console.error("Erro na câmera: ", error));
+
+        function capturar() {
+            const canvas = document.createElement('canvas');
+            canvas.width = video.videoWidth;
+            canvas.height = video.videoHeight;
+            canvas.getContext('2d').drawImage(video, 0, 0);
+            canvas.toBlob(blob => {
+                const formData = new FormData();
+                formData.append('imagem', blob, 'captura.jpg');
+
+                fetch('http://localhost:5000/validar_biometria', {
+                    method: 'POST',
+                    body: formData
+                })
+                    .then(res => res.json())
+                    .then(data => alert(data.mensagem))
+                    .catch(err => alert("Erro ao validar rosto: " + err));
+            }, 'image/jpeg');
+        }
+    </script>
+    <form action="/validar_biometria" method="post" enctype="multipart/form-data">
+        <input type="text" name="nome" placeholder="Digite seu nome" required />
+        <input type="file" name="imagem" accept="image/*" capture="user" required />
+        <button type="submit">Enviar Foto</button>
+    </form>
+</body>
+
+</html>

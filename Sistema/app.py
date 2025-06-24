@@ -19,7 +19,7 @@ if not os.path.exists(save_dir):
     os.makedirs(save_dir)
 
 USE_MOCK = False
-DEVICE_IP = 'localhost:8080' if USE_MOCK else '192.168.0.50'
+DEVICE_IP = 'localhost:8080' if USE_MOCK else '192.168.137.2'
 USERNAME = 'admin'
 PASSWORD = 'Esdo2025'
  
@@ -43,7 +43,7 @@ def home():
 @app.route('/cadastrar_usuario', methods=['POST'])
 def cadastrar_usuario():
     try:
-        user_id = gerar_user_id
+        user_id = gerar_user_id()
         data = request.get_json()
         nome = data.get('nome')
         senha = data.get('senha') or '1234'
@@ -64,7 +64,8 @@ def cadastrar_usuario():
 
         return jsonify({'status': 'sucesso', 'mensagem': resultado}), 201
     except Exception as e:
-        print("Erro detalhado: " + str(e))
+        import traceback
+        traceback.print_exc()
         return jsonify({'status': 'erro', 'mensagem': str(e)}), 500
 
 def gerar_user_id():
@@ -77,7 +78,8 @@ def listar_usuarios():
         resultado = api.get_all_users(count=10)
         return jsonify({'status': 'sucesso', 'usuarios': resultado}), 200
     except Exception as e:
-        print("Erro Detalhado", e)
+        import traceback
+        traceback.print_exc()
         return jsonify({'status': 'Erro', 'mensagem': str(e)}), 500
 
 @app.route('/deletar_todos_usuarios', methods=['DELETE'])
@@ -86,31 +88,30 @@ def deletar_todos_usuarios():
         resultado = api.delete_all_users_v2()
         return jsonify({'status': 'sucesso', 'mensagem': resultado})
     except Exception as e:
+        import traceback
+        traceback.print_exc()
         return jsonify({'status': 'Erro', 'mnesagem': str(e)})
 
-@app.route('/validar_biometria', methods=['POST'])
-def validar_biometria():
+
+@app.route('/enviar_foto_dispositivo', methods=['POST'])
+def enviar_foto_dispositivo():
     try:
-        if 'imagem' not in request.files:
-            return jsonify({'status': 'erro', 'mensagem': 'Imagem não encontrada na requisição.'}), 400
+        if 'imagem' not in request.files or 'user_id' not in request.form:
+            return jsonify({'status': 'erro', 'mensagem': 'Imagem e ID são obrigatórios.'}), 400
 
         imagem = request.files['imagem']
-        filename = secure_filename("validacao_temp.jpg")
-        filepath = os.path.join("s_files", filename)
+        user_id = request.form['user_id']
+
+        filename = secure_filename(imagem.filename)
+        filepath = os.path.join(save_dir, filename)
         imagem.save(filepath)
 
-        # Carrega e tenta identificar rosto
-        img = cv2.imread(filepath)
-        gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-        face_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_frontalface_default.xml')
-        faces = face_cascade.detectMultiScale(gray, scaleFactor=1.1, minNeighbors=5)
-
-        if len(faces) == 0:
-            return jsonify({'status': 'erro', 'mensagem': 'Nenhum rosto detectado.'}), 422
-
-        return jsonify({'status': 'sucesso', 'mensagem': 'Rosto validado com sucesso.'}), 200
+        resultado = api.send_face_to_device(user_id=int(user_id), image_path=filepath)
+        return jsonify({'status': 'sucesso', 'mensagem': resultado}), 200
 
     except Exception as e:
+        import traceback
+        traceback.print_exc()
         return jsonify({'status': 'erro', 'mensagem': str(e)}), 500
     
 if __name__ == '__main__':

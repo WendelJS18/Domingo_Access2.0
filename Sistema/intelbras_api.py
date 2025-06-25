@@ -2,6 +2,9 @@ import requests
 import os
 from datetime import datetime
 from requests.auth import HTTPDigestAuth
+from PIL import Image
+
+
 
 
 class IntelbrasAccessControlAPI:
@@ -19,34 +22,45 @@ class IntelbrasAccessControlAPI:
             return data.get("result", "N/A")
         except Exception as e:
             raise Exception(f"ERROR - During Get Current Time: {str(e)}")
-
-    def add_user_v2(self, CardName: str, UserType: int, Password: str,
-                    Authority: int, Doors: int, TimeSections: int,
-                    ValidDateStart: str, ValidDateEnd: str) -> str:
-        UserList = {
-            "UserList": [
-                {
-                    "UserName": CardName,
-                    "UserID": self._gerar_user_id(),
-                    "UserType": UserType,
-                    "Authority": Authority,
-                    "Password": Password,
-                    "Doors": [Doors],
-                    "TimeSections": [TimeSections],
-                    "ValidFrom": ValidDateStart,
-                    "ValidTo": ValidDateEnd
-                }
-            ]
-        }
+    
+    def add_user_v2(self, CardName: str, UserID: int, UserType: int, Password: int, Authority: int, Doors: int, TimeSections: int, ValidDateStart: str, ValidDateEnd: str) -> str:
+        ''''
+        UserID: Numero de ID do usuário
+        CardName: Nome de usuário/Nome do cartão
+        UserType: 0- Geral user, by defaut; 1 - Blocklist user (report the blocklist event ACBlocklist); 2 - Guest user: 3 - Patrol user 4 - VIP user; 5 - Disable user
+        Password: Senha de acesso do usuário
+        Authority: 1 - administrador; 2 - usuário normal
+        Doors: Portas que o usúario terá acesso
+        TimeSections: Zona de tempo de acesso do usuário, padrão: 255
+        ValidDateStart: Data de Inicio de Validade, exemplo: 2019-01-02 00:00:00
+        ValidDateEnd: Data de Final de Validade, exemplo: 2037-01-02 01:00:00
+        '''
+        UserList = (
+            '''{
+                "UserList": [
+                    {
+                        "UserID": "''' + str(UserID) + '''",
+                        "UserName": "''' + str(CardName) + '''",
+                        "UserType": ''' + str(UserType) + ''',
+                        "Authority": "''' + str(Authority) + '''",
+                        "Password": "''' + str(Password) + '''",
+                        "Doors": "''' + '[' + str(Doors) + ']' + '''",
+                        "TimeSections": "''' + '[' + str(TimeSections) + ']' + '''",
+                        "ValidFrom": "''' + str(ValidDateStart) + '''",
+                        "ValidTo": "''' + str(ValidDateEnd) + '''"
+                    }
+                ]
+            }''')
         try:
-            url = f"http://{self.ip}/cgi-bin/AccessUser.cgi?action=insertMulti"
-            result = requests.post(url, json=UserList, auth=self.digest_auth, timeout=20)
-            if result.status_code != 200:
-                raise Exception(f"Falha ao adicionar usuário. Status: {result.status_code}")
-            return result.text
-        except Exception as e:
-            raise Exception(f"ERROR - During Add User V2: {str(e)}")
+            url = "http://{}/cgi-bin/AccessUser.cgi?action=insertMulti".format(str(self.ip))
+            result = requests.get(url, data=UserList, auth=self.digest_auth, stream=True, timeout=20)
 
+            if result.status_code != 200:
+                raise Exception()
+            return str(result.text)
+        except Exception:
+            raise Exception("ERROR - During Add New User using V2 command - ")
+    
     def get_all_users(self, count: int) -> dict:
         try:
             url = f"http://{self.ip}/cgi-bin/recordFinder.cgi?action=doSeekFind&name=AccessControlCard&count={count}"
@@ -77,25 +91,49 @@ class IntelbrasAccessControlAPI:
                 data[key.strip()] = val.strip()
         return data
     
-    def send_face_to_divice(self, user_id: int, image_path: str):
+    def send_face_to_device(self, user_id: int, image_path: str):
         
-        url = f"http://{self.ip}/cgi-bin/user/UploadFaceImage.cgi"
-        auth = HTTPDigestAuth(self.username, self.password)
+        url = f"http://{self.ip}/cgi-bin/faceRecognition.cgi?action=uploadFaceImage&UserID={user_id}"
+
+        auth = HTTPDigestAuth(self.username, self.passwd)
 
         try:
-            with open(image_path, 'rb') as image_file:
+            base, _ = os.path.splitext(image_path)
+            converted_path = f"{base}_converted.jpg"
+
+            img = Image.open(image_path).convert("RGB")
+            img.save(converted_path, format="JPEG", quality=90)
+
+            with open(converted_path, 'rb') as image_file:
                 files = {
-                    'FaceImage': image_file,
+                    'FaceImage': ('face.jpg', image_file, 'image/jpeg'),
                 }
-                data = {
-                    'UserID': str(user_id)
-                }
-                response = requests.post(url, files=files, data=data, auth=auth, timeout=10)
-            if response.status_code !=200:
-                raise Exception(f"Falha ao enivar rosto: {response.status_code} - {response.text}")
+                response = requests.post(url, files=files, auth=auth, timeout=20)
+            if os.path.exists(converted_path):
+                os.remove(converted_path)
+            
+            if response.status_code != 200:
+                raise Exception(f"Falha ao enviar rosto: {response.status_code} - {response.text}")
+            
             return response.text
+        
         except Exception as e:
             import traceback
             traceback.print_exc()
             raise Exception(f"ERROR - During Upload Face Image: {e}")
-
+        
+    def testar_comunicacao(self):
+        try:
+            url = f"http://{self.ip}/cgi-bin?action=getProductDefiniton"
+            response = requests.get(url, auth=HTTPDigestAuth(self.username,self.passwd), timeout=10)
+            if response.status_code ==200:
+                print("Comunicação e autentificação DIGEST funcionando!")
+                print("Resposta:", response.text)
+                return True
+            else:
+                print(f"Erro: {response.status_code} - {response.text}")
+                return False
+        except Exception as e:
+            print("Erro de comunicação com o dispositivo:", e)
+            return False
+        

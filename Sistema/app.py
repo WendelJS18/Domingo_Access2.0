@@ -18,13 +18,14 @@ save_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "s_files")
 if not os.path.exists(save_dir):
     os.makedirs(save_dir)
 
-USE_MOCK = False
-DEVICE_IP = 'localhost:8080' if USE_MOCK else '192.168.137.2'
-USERNAME = 'admin'
-PASSWORD = 'Esdo2025'
+
+DEVICE_IP = '192.168.137.2'
+USERNAME = '*'
+PASSWORD = '*'
  
 api = IntelbrasAccessControlAPI(DEVICE_IP, USERNAME, PASSWORD)
- 
+api.testar_comunicacao()
+
 @app.route('/ping_dispositivo', methods=['POST'])
 def ping_dispositivo():
     try:
@@ -61,7 +62,7 @@ def cadastrar_usuario():
             ValidDateStart=inicio,
             ValidDateEnd=fim
         )
-
+       
         return jsonify({'status': 'sucesso', 'mensagem': resultado}), 201
     except Exception as e:
         import traceback
@@ -92,27 +93,27 @@ def deletar_todos_usuarios():
         traceback.print_exc()
         return jsonify({'status': 'Erro', 'mnesagem': str(e)})
 
-
-@app.route('/enviar_foto_dispositivo', methods=['POST'])
+@app.route("/enviar_foto_dispositivo", methods=["POST"])
 def enviar_foto_dispositivo():
     try:
-        if 'imagem' not in request.files or 'user_id' not in request.form:
-            return jsonify({'status': 'erro', 'mensagem': 'Imagem e ID são obrigatórios.'}), 400
+        user_id = request.form.get("user_id")
+        foto = request.files.get("foto")
 
-        imagem = request.files['imagem']
-        user_id = request.form['user_id']
+        if not user_id or not foto:
+            return jsonify({"erro": "Parâmetros obrigatórios ausentes."}), 400
 
-        filename = secure_filename(imagem.filename)
-        filepath = os.path.join(save_dir, filename)
-        imagem.save(filepath)
+        filepath = os.path.join("temp_upload", foto.filename)
+        os.makedirs("temp_upload", exist_ok=True)
+        foto.save(filepath)
 
-        resultado = api.send_face_to_device(user_id=int(user_id), image_path=filepath)
-        return jsonify({'status': 'sucesso', 'mensagem': resultado}), 200
+        resultado = api.send_face_to_device(user_id=user_id, image_path=filepath)
+
+        os.remove(filepath)
+        return jsonify({"resultado": resultado})
 
     except Exception as e:
-        import traceback
-        traceback.print_exc()
-        return jsonify({'status': 'erro', 'mensagem': str(e)}), 500
+        return jsonify({"erro": str(e)}), 500
+
+if __name__ == "__main__":
     
-if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0', port=5000)
+    app.run(debug=False, host="0.0.0.0")

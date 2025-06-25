@@ -8,10 +8,8 @@ from werkzeug.utils import secure_filename
 from flask_cors import CORS
 
 
-app = Flask(__name__) 
+app = Flask(__name__)
 CORS(app)
-
-
 
 
 save_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "s_files")
@@ -20,11 +18,12 @@ if not os.path.exists(save_dir):
 
 
 DEVICE_IP = '192.168.137.2'
-USERNAME = '*'
-PASSWORD = '*'
- 
+USERNAME = 'admin'
+PASSWORD = 'Esdo2025'
+
 api = IntelbrasAccessControlAPI(DEVICE_IP, USERNAME, PASSWORD)
 api.testar_comunicacao()
+
 
 @app.route('/ping_dispositivo', methods=['POST'])
 def ping_dispositivo():
@@ -40,11 +39,14 @@ def ping_dispositivo():
 def home():
     return 'API de cadastro facial ativa.'
 
+current_user_id = 1
 
 @app.route('/cadastrar_usuario', methods=['POST'])
 def cadastrar_usuario():
     try:
-        user_id = gerar_user_id()
+        global current_user_id
+        user_id = current_user_id
+        current_user_id += 1
         data = request.get_json()
         nome = data.get('nome')
         senha = data.get('senha') or '1234'
@@ -62,16 +64,18 @@ def cadastrar_usuario():
             ValidDateStart=inicio,
             ValidDateEnd=fim
         )
-       
+
         return jsonify({'status': 'sucesso', 'mensagem': resultado}), 201
     except Exception as e:
         import traceback
         traceback.print_exc()
         return jsonify({'status': 'erro', 'mensagem': str(e)}), 500
 
-def gerar_user_id():
-    now = datetime.now()
-    return int(now.strftime("%Y%m%d%H%M%S"))   
+
+#def gerar_user_id():
+    #now = datetime.now()
+    #return int(now.strftime("%Y%m%d%H%M%S"))
+
 
 @app.route('/listar_usuarios', methods=['GET'])
 def listar_usuarios():
@@ -83,6 +87,7 @@ def listar_usuarios():
         traceback.print_exc()
         return jsonify({'status': 'Erro', 'mensagem': str(e)}), 500
 
+
 @app.route('/deletar_todos_usuarios', methods=['DELETE'])
 def deletar_todos_usuarios():
     try:
@@ -92,6 +97,7 @@ def deletar_todos_usuarios():
         import traceback
         traceback.print_exc()
         return jsonify({'status': 'Erro', 'mnesagem': str(e)})
+
 
 @app.route("/enviar_foto_dispositivo", methods=["POST"])
 def enviar_foto_dispositivo():
@@ -115,5 +121,5 @@ def enviar_foto_dispositivo():
         return jsonify({"erro": str(e)}), 500
 
 if __name__ == "__main__":
-    
+
     app.run(debug=False, host="0.0.0.0")

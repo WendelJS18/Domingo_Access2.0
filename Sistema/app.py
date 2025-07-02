@@ -1,8 +1,9 @@
 import os
 import cv2
 import traceback
+import base64
 from threading import Lock
-from flask import Flask, request, jsonify, send_from_directory
+from flask import Flask, request, jsonify, send_from_directory, render_template
 from datetime import datetime
 from intelbras_api import IntelbrasAccessControlAPI
 from flask_cors import CORS
@@ -24,6 +25,12 @@ PASSWORD = 'Esdo2025'
 api = IntelbrasAccessControlAPI(DEVICE_IP, USERNAME, PASSWORD)
 api.testar_comunicacao()
 
+user_id_lock = Lock()
+current_user_id = 1
+
+@app.route ('/')
+def home():
+    return render_template("index.html")
 @app.route('/cadastro')
 def cadastro():
     return send_from_directory(directory=os.path.dirname(__file__), path="index.html")
@@ -38,9 +45,6 @@ def ping_dispositivo():
         return jsonify({'status': 'erro', 'mensagem': str(e)}), 500
 
 
-@app.route('/')
-def home():
-    return 'API de cadastro facial ativa.'
 def gerar_user_id():
     id_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "ultimo_id.txt")
 
@@ -58,8 +62,7 @@ def gerar_user_id():
             f.write(str(new_id))
 
     return str(new_id)
-user_id_lock = Lock()
-current_user_id = 1
+
 
 @app.route('/cadastrar_usuario', methods=['POST'])
 def cadastrar_usuario():
@@ -112,6 +115,11 @@ def listar_usuarios():
 def deletar_todos_usuarios():
     try:
         resultado = api.delete_all_users_v2()
+
+        with user_id_lock:
+            
+            current_user_id = 1
+        
         return jsonify({'status': 'sucesso', 'mensagem': resultado})
     except Exception as e:
         import traceback
@@ -122,23 +130,49 @@ def deletar_todos_usuarios():
 @app.route("/enviar_foto_dispositivo", methods=["POST"])
 def enviar_foto_dispositivo():
     try:
-        user_id = request.form.get("user_id")
-        foto = request.files.get("foto")
+        user_id = request.json.get("user_id") if request.is_json else request.form.get("user_id")
+        photo_base64 = request.json.get("photo_base64") if request.is_json else request.form.get("photo_base64")
+        foto_file = request.files.get("foto")
 
-        if not user_id or not foto:
-            return jsonify({"erro": "Parâmetros obrigatórios ausentes."}), 400
+        if not user_id:
+            return jsonify({"erro": "User ID ausente."}), 400
 
-        filepath = os.path.join("temp_upload", foto.filename)
         os.makedirs("temp_upload", exist_ok=True)
-        foto.save(filepath)
+        filepath = None
 
+        if foto_file:
+            # Caso a imagem tenha vindo via upload (form-data)
+            filepath = os.path.join("temp_upload", foto_file.filename)
+            foto_file.save(filepath)
+
+        elif photo_base64:
+            from PIL import Image
+            from io import BytesIO
+            import base64
+
+            img_data = base64.b64decode(photo_base64)
+            img = Image.open(BytesIO(img_data)).convert("RGB")
+
+            # Definir filepath com nome padrão
+            filepath = os.path.join("temp_upload", f"{user_id}_captura.jpg")
+            img.save(filepath, format="JPEG")
+
+        else:
+            return jsonify({"erro": "Nenhuma imagem enviada."}), 400
+
+        # Envio para o dispositivo
         resultado = api.send_face_to_device(user_id=user_id, image_path=filepath)
 
-        os.remove(filepath)
-        return jsonify({"resultado": resultado})
+        if os.path.exists(filepath):
+            os.remove(filepath)
 
+        return jsonify({"resultado": resultado})
+    
     except Exception as e:
+        traceback.print_exc()
         return jsonify({"erro": str(e)}), 500
+
+
 
 if __name__ == "__main__":
 

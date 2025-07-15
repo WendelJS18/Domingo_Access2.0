@@ -2,6 +2,8 @@ import os
 import cv2
 import traceback
 import base64
+import logging
+from logging.handlers import RotatingFileHandler
 from threading import Lock
 from flask import Flask, request, jsonify, send_from_directory, render_template
 from datetime import datetime
@@ -9,9 +11,25 @@ from intelbras_api import IntelbrasAccessControlAPI
 from flask_cors import CORS
 
 
+
+
+
 app = Flask(__name__)
 CORS(app)
 
+log_formatter = logging.Formatter(
+    '%(asctime)s %(levelname)s %(funcName)s(%(lineno)d) %(message)s')
+logFile = 'domingos_acess.log'
+
+my_handler = RotatingFileHandler(logFile, mode='a', maxBytes=5*1024*1024,
+                                 backupCount=2, encoding=None, deplay=0)
+my_handler.setFormatter(log_formatter)
+my_handler.setLevel(logging.INFO)
+
+app.logger.addHandler(my_handler)
+app.logger.setLevel(logging.INFO)
+
+app.logger.info("API DomingosAccess iniciada com sucesso.")
 
 save_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "s_files")
 if not os.path.exists(save_dir):
@@ -28,12 +46,16 @@ api.testar_comunicacao()
 user_id_lock = Lock()
 current_user_id = 1
 
-@app.route ('/')
+
+@app.route('/')
 def home():
     return render_template("index.html")
+
+
 @app.route('/cadastro')
 def cadastro():
     return send_from_directory(directory=os.path.dirname(__file__), path="index.html")
+
 
 @app.route('/ping_dispositivo', methods=['POST'])
 def ping_dispositivo():
@@ -41,17 +63,19 @@ def ping_dispositivo():
         resultado = api.get_current_time()
         return jsonify({'status': 'sucesso', 'mensagem': resultado}), 200
     except Exception as e:
-        traceback.print_exc()
+        app.logger.error(
+            f"Ocorreu um erro não esperado ao cadastrar usuário: {e}", exc_info=True)
         return jsonify({'status': 'erro', 'mensagem': str(e)}), 500
 
 
 def gerar_user_id():
-    id_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "ultimo_id.txt")
+    id_path = os.path.join(os.path.dirname(
+        os.path.abspath(__file__)), "ultimo_id.txt")
 
     with user_id_lock:
         if not os.path.exists(id_path):
             with open(id_path, "w") as f:
-                f.write("1")  
+                f.write("1")
 
         with open(id_path, "r") as f:
             last_id = int(f.read().strip())
@@ -66,11 +90,10 @@ def gerar_user_id():
 
 @app.route('/cadastrar_usuario', methods=['POST'])
 def cadastrar_usuario():
-    
-    global current_user_id    
+
+    global current_user_id
     try:
-        
-        
+
         data = request.get_json()
         nome = data.get('nome')
         senha = data.get('senha') or '1234'
@@ -94,11 +117,11 @@ def cadastrar_usuario():
         )
 
         return jsonify({'status': 'sucesso', 'mensagem': {'UserID': user_id, 'retorno': resultado}}), 201
-    
+
     except Exception as e:
-        import traceback
-        traceback.print_exc()
+        app.logger.error(f"Ocorreu um erro não esperado ao cadatrar usuário: {e}")
         return jsonify({'status': 'erro', 'mensagem': str(e)}), 500
+
 
 @app.route('/listar_usuarios', methods=['GET'])
 def listar_usuarios():
@@ -106,8 +129,7 @@ def listar_usuarios():
         resultado = api.get_all_users(count=10)
         return jsonify({'status': 'sucesso', 'usuarios': resultado}), 200
     except Exception as e:
-        import traceback
-        traceback.print_exc()
+        app.logger.error(f"Ocorreu um erro não ao cadastrar usuário: {e}")
         return jsonify({'status': 'Erro', 'mensagem': str(e)}), 500
 
 
@@ -117,21 +139,22 @@ def deletar_todos_usuarios():
         resultado = api.delete_all_users_v2()
 
         with user_id_lock:
-            
+
             current_user_id = 1
-        
+
         return jsonify({'status': 'sucesso', 'mensagem': resultado})
     except Exception as e:
-        import traceback
-        traceback.print_exc()
+        app.logger.error(f'Ocorreu um erro não esperado ao deletar todos os usuarios: {e}')
         return jsonify({'status': 'Erro', 'mnesagem': str(e)})
 
 
 @app.route("/enviar_foto_dispositivo", methods=["POST"])
 def enviar_foto_dispositivo():
     try:
-        user_id = request.json.get("user_id") if request.is_json else request.form.get("user_id")
-        photo_base64 = request.json.get("photo_base64") if request.is_json else request.form.get("photo_base64")
+        user_id = request.json.get(
+            "user_id") if request.is_json else request.form.get("user_id")
+        photo_base64 = request.json.get(
+            "photo_base64") if request.is_json else request.form.get("photo_base64")
         foto_file = request.files.get("foto")
 
         if not user_id:
@@ -141,7 +164,6 @@ def enviar_foto_dispositivo():
         filepath = None
 
         if foto_file:
-            # Caso a imagem tenha vindo via upload (form-data)
             filepath = os.path.join("temp_upload", foto_file.filename)
             foto_file.save(filepath)
 
@@ -153,25 +175,25 @@ def enviar_foto_dispositivo():
             img_data = base64.b64decode(photo_base64)
             img = Image.open(BytesIO(img_data)).convert("RGB")
 
-            # Definir filepath com nome padrão
+            
             filepath = os.path.join("temp_upload", f"{user_id}_captura.jpg")
             img.save(filepath, format="JPEG")
 
         else:
             return jsonify({"erro": "Nenhuma imagem enviada."}), 400
 
-        # Envio para o dispositivo
-        resultado = api.send_face_to_device(user_id=user_id, image_path=filepath)
+        
+        resultado = api.send_face_to_device(
+            user_id=user_id, image_path=filepath)
 
         if os.path.exists(filepath):
             os.remove(filepath)
 
         return jsonify({"resultado": resultado})
-    
-    except Exception as e:
-        traceback.print_exc()
-        return jsonify({"erro": str(e)}), 500
 
+    except Exception as e:
+        app.logger.error(f'Ocorreu um erro a enviar biometria para o dispositivo: {e}')
+        return jsonify({"erro": str(e)}), 500
 
 
 if __name__ == "__main__":

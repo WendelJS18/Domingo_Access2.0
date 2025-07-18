@@ -1,87 +1,99 @@
-# 📸 Sistema de Cadastro de Biometria Facial Remoto
+# DomingosAccess
 
-Este projeto tem como objetivo facilitar o cadastramento facial remoto de usuários (pais ou visitantes) que desejam acessar unidades escolares. 
-A solução permite que o cadastro biométrico facial seja feito por meio de um celular, com posterior integração automática ao controlador de acesso **SS 3532 MF da Intelbras**.
+**DomingosAccess** é um sistema completo de controle de acesso biométrico por reconhecimento facial, desenvolvido para a **Escola São Domingos**. O sistema utiliza câmera em tempo real via navegador, validação com base de dados e integração direta com o dispositivo de controle de acesso facial da **Intelbras (SS 3532 MF)** por meio de uma **API RESTful**.
 
----
+## 📌 Objetivo
 
-## 🚀 Tecnologias Utilizadas
-
-- **Python 3.10+**
-- **Flask** – Criação da API Web
-- **OpenCV** – Processamento e validação da imagem facial
-- **IntelbrasAccessControlAPI** – Comunicação com o SS 3532 MF via comandos CGI
-- **Requests** – Requisições HTTP autenticadas
-- **Postman** – Testes manuais dos endpoints
-- **Figma** – Protótipos de interface
-- *(Opcional)* Redis / RabbitMQ – Controle de concorrência e filas futuras
+Automatizar e centralizar o controle de entrada de usuários (alunos, professores ou funcionários) na escola, garantindo segurança e praticidade no processo de cadastro e verificação biométrica facial.
 
 ---
 
-## 🧩 Funcionalidades
+## 🔧 Tecnologias Utilizadas
 
-- Cadastro facial via celular
-- Validação de imagem com OpenCV
-- Comunicação segura com o dispositivo SS 3532 MF
-- Gerenciamento de usuários por integração com o **InControl Web**
-- Mock para testes locais da API (sem necessidade do dispositivo físico)
-
----
-
-## 🖼 Protótipos (UI/UX)
-
-Desenvolvido no Figma:
-- Tela de cadastro de usuário
-- Tela de instrução para biometria
-- Captura facial em tempo real
-- Confirmação de cadastro
+| Camada         | Tecnologia                       |
+|----------------|----------------------------------|
+| Back-end       | Python 3.10, Flask, requests     |
+| Front-end      | HTML5, JavaScript (vanilla), CSS |
+| Reconhecimento | OpenCV + PIL (captura e ajustes) |
+| Integração     | HTTP Digest Auth + API Intelbras |
+| Banco de dados | *(Integração futura com Kinto)*  |
 
 ---
 
-## ⚙️ Estrutura do Projeto
+## ⚙️ Funcionalidades Principais
 
+### ✅ Cadastro de Usuário
+- Rota: `POST /cadastrar_usuario`
+- Gera um ID único incremental para o usuário.
+- Envia os dados ao dispositivo via endpoint oficial da Intelbras (`insertMulti`).
+- Verifica se o usuário está previamente autorizado via base de dados.
 
-facial_api_flask/
-│
-├── app.py                      # API principal com Flask
-├── intelbras_api.py           # Classe para comandos HTTP com o SS 3532 MF
-├── mock_ss3532mf.py           # Simulador local do dispositivo para testes
-├── templates/                 # Interface HTML/CSS
-├── s_files/                   # Imagens/arquivos salvos localmente
-└── README.md
+### ✅ Captura da Foto via Navegador
+- A interface web utiliza a **câmera do próprio dispositivo** para capturar uma imagem do rosto em tempo real.
+- A imagem é validada (resolução, proporção, tamanho máximo) e convertida para Base64.
+- A imagem é enviada e vinculada ao `UserID`.
 
-🛠 Como Rodar Localmente
+### ✅ Envio da Foto ao Dispositivo
+- Rota: `POST /enviar_foto_dispositivo`
+- API realiza requisição com `PhotoData` em JSON para:  
+  `http://<device_ip>/cgi-bin/AccessFace.cgi?action=insertMulti`
+- Se a imagem não cumprir os critérios (600x1200px e < 100KB), ela é automaticamente redimensionada.
 
-Clone o repositório:
+### ✅ Listagem e Exclusão
+- Rota `GET /listar_usuarios`: Retorna lista dos usuários cadastrados.
+- Rota `DELETE /deletar_todos_usuarios`: Remove todos os usuários do dispositivo e **reseta a contagem de ID** no backend.
 
-git clone https://github.com/seuusuario/facial-api-flask.git
-cd facial-api-flask
+---
 
-Crie e ative o ambiente virtual:
+## 🧠 Lógica de Geração de ID
 
-python -m venv env
-env\Scripts\activate  # Windows
+O sistema utiliza um contador `user_id` sequencial e controlado por `threading.Lock` para garantir que **em caso de múltiplos cadastros simultâneos**, cada usuário receba um ID único corretamente — evitando conflitos ou duplicações.
 
-Instale as dependências:
+---
 
-pip install -r requirements.txt
+## 🔒 Verificação Prévia via Base de Dados
 
-Execute a API:
+Antes de permitir o cadastro facial, o sistema validará o nome completo e CPF com uma base externa da Kinto Escola, através de uma **API (em desenvolvimento)**.  
+Somente usuários autorizados seguem para o processo de reconhecimento facial.
 
+---
+
+## 💡 Como Usar o Projeto
+
+### 1. Inicie o back-end:
+```bash
 python app.py
+````
+---
 
-(Opcional) Inicie o mock:
+### 2. Acesse via navegador:
+```text
+http://localhost:5000
+````
 
-python mock_ss3532mf.py
+---
 
-📡 Endpoints da API
-GET / – Verifica se a API está ativa
+### 3. Tela de cadastro:
+Preencha nome e senha
 
-POST /cadastrar_usuario – Envia dados + imagem para cadastrar o usuário
+Capture sua foto com a câmera
 
-📌 Considerações Finais
-Este projeto é um MVP em desenvolvimento e faz parte de uma proposta de inovação tecnológica para instituições de ensino.
-A solução é escalável, segura e pode ser adaptada para empresas e condomínios.
+Aguarde o retorno da API
 
-🔐 Autor e Licença
-Desenvolvido por Wendel Samora
+---
+
+## 📁 Estrutura do Projeto
+```
+DomingosAccess/
+│
+├── app.py                   # Servidor Flask
+├── intelbras_api.py         # Lógica de integração com dispositivo Intelbras
+├── templates/               # HTML do front-end
+│   └── index.html
+├── temp_upload/             # Pasta temporária de fotos capturadas
+├── README.md
+```
+# 🤝 Colaboração
+Desenvolvido por Wendel Samora, com apoio da Escola São Domingos.
+Agradecimentos ao suporte técnico da Intelbras pelas documentações e coleções Postman.
+

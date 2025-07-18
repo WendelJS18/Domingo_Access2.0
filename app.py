@@ -28,9 +28,9 @@ my_handler.setLevel(logging.INFO)
 app.logger.addHandler(my_handler)
 app.logger.setLevel(logging.INFO)
 
-DEVICE_IP = '192.168.137.2'
+DEVICE_IP = 'xxx.xxx.xxx.xx'
 USERNAME = 'admin'
-PASSWORD = 'Esdo2025'
+PASSWORD = 'xxxxxx'
 
 api = IntelbrasAccessControlAPI(DEVICE_IP, USERNAME, PASSWORD)
 
@@ -40,7 +40,7 @@ save_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "s_files")
 if not os.path.exists(save_dir):
     os.makedirs(save_dir)
 
-app.secret_key = 'Domingos@@@@19301'
+app.secret_key = '---------'
 
 
 user_id_lock = Lock()

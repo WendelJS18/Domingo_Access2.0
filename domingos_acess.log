@@ -3,3 +3,370 @@
 2025-07-16 12:54:08,027 INFO <module>(33) API DomingosAccess iniciada com sucesso.
 2025-07-16 12:56:31,867 INFO <module>(33) API DomingosAccess iniciada com sucesso.
 2025-07-16 13:55:41,148 INFO <module>(33) API DomingosAccess iniciada com sucesso.
+2025-07-16 14:34:28,171 INFO <module>(37) API DomingosAccess iniciada com sucesso.
+2025-07-16 15:02:20,974 INFO <module>(37) API DomingosAccess iniciada com sucesso.
+2025-07-16 15:05:32,551 INFO <module>(37) API DomingosAccess iniciada com sucesso.
+2025-07-16 15:11:23,250 INFO <module>(36) API DomingosAccess iniciada.
+2025-07-16 16:17:18,866 INFO <module>(37) API DomingosAccess iniciada com sucesso.
+2025-07-16 16:17:30,056 ERROR log_exception(875) Exception on / [GET]
+Traceback (most recent call last):
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\flask_cors\extension.py", line 176, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "c:\Users\wendel.santos\Desktop\reconhecimento\app.py", line 106, in cadastrar_usuario
+    return render_template('index.html')
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\flask\templating.py", line 150, in render_template
+    return _render(app, template, context)
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\flask\templating.py", line 131, in _render
+    rv = template.render(context)
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\jinja2\environment.py", line 1295, in render
+    self.environment.handle_exception()
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "c:\Users\wendel.santos\Desktop\reconhecimento\templates\index.html", line 23, in top-level template code
+    <form id="userForm" method="POST" action="{{ url_for('cadastrar_usuario_page') }}">
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\flask\app.py", line 1121, in url_for
+    return self.handle_url_build_error(error, endpoint, values)
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\flask\app.py", line 1110, in url_for
+    rv = url_adapter.build(  # type: ignore[union-attr]
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\werkzeug\routing\map.py", line 924, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'cadastrar_usuario_page'. Did you mean 'cadastrar_usuario' instead?
+2025-07-16 17:00:18,795 INFO <module>(37) API DomingosAccess iniciada com sucesso.
+2025-07-16 17:00:40,599 INFO cadastrar_usuario(76) Recebida tentativa de cadastro para: Wendel Samora , CPF: 181.181.181-00
+2025-07-16 17:01:00,613 ERROR cadastrar_usuario(99) Falha na Etapa 1 (Cadastro): ERROR - During Add New User using V2 command - 
+Traceback (most recent call last):
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\urllib3\connection.py", line 198, in _new_conn
+    sock = connection.create_connection(
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\urllib3\util\connection.py", line 85, in create_connection
+    raise err
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\urllib3\util\connection.py", line 73, in create_connection
+    sock.connect(sa)
+TimeoutError: timed out
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\urllib3\connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\urllib3\connectionpool.py", line 493, in _make_request
+    conn.request(
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\urllib3\connection.py", line 445, in request
+    self.endheaders()
+  File "C:\Users\wendel.santos\AppData\Local\Programs\Python\Python310\lib\http\client.py", line 1271, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "C:\Users\wendel.santos\AppData\Local\Programs\Python\Python310\lib\http\client.py", line 1031, in _send_output
+    self.send(msg)
+  File "C:\Users\wendel.santos\AppData\Local\Programs\Python\Python310\lib\http\client.py", line 969, in send
+    self.connect()
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\urllib3\connection.py", line 276, in connect
+    self.sock = self._new_conn()
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\urllib3\connection.py", line 207, in _new_conn
+    raise ConnectTimeoutError(
+urllib3.exceptions.ConnectTimeoutError: (<urllib3.connection.HTTPConnection object at 0x00000218A4B7FEB0>, 'Connection to 192.168.137.2 timed out. (connect timeout=20)')
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\requests\adapters.py", line 667, in send
+    resp = conn.urlopen(
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\urllib3\connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\urllib3\util\retry.py", line 519, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='192.168.137.2', port=80): Max retries exceeded with url: /cgi-bin/AccessUser.cgi?action=insertMulti (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x00000218A4B7FEB0>, 'Connection to 192.168.137.2 timed out. (connect timeout=20)'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\wendel.santos\Desktop\reconhecimento\Sistema\intelbras_api.py", line 58, in add_user_v2
+    result = requests.get(
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\requests\api.py", line 73, in get
+    return request("get", url, params=params, **kwargs)
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\requests\api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\requests\sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\requests\adapters.py", line 688, in send
+    raise ConnectTimeout(e, request=request)
+requests.exceptions.ConnectTimeout: HTTPConnectionPool(host='192.168.137.2', port=80): Max retries exceeded with url: /cgi-bin/AccessUser.cgi?action=insertMulti (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x00000218A4B7FEB0>, 'Connection to 192.168.137.2 timed out. (connect timeout=20)'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\wendel.santos\Desktop\reconhecimento\app.py", line 85, in cadastrar_usuario
+    resultado = api.add_user_v2(
+  File "c:\Users\wendel.santos\Desktop\reconhecimento\Sistema\intelbras_api.py", line 65, in add_user_v2
+    raise Exception("ERROR - During Add New User using V2 command - ")
+Exception: ERROR - During Add New User using V2 command - 
+2025-07-16 17:12:11,904 INFO <module>(37) API DomingosAccess iniciada com sucesso.
+2025-07-17 09:53:38,019 INFO cadastrar_usuario(76) Recebida tentativa de cadastro para: Wendel , CPF: 181.055.597-30
+2025-07-17 09:53:38,168 INFO cadastrar_usuario(94) Usuário 'Wendel ' (ID: 3) criado no dispositivo. Redirecionando para captura.
+2025-07-17 09:58:00,522 INFO cadastrar_usuario(76) Recebida tentativa de cadastro para: Wemerson , CPF: 111.222.333-44
+2025-07-17 09:58:00,621 INFO cadastrar_usuario(94) Usuário 'Wemerson ' (ID: 4) criado no dispositivo. Redirecionando para captura.
+2025-07-17 10:38:50,544 INFO <module>(37) API DomingosAccess iniciada com sucesso.
+2025-07-17 10:39:25,831 INFO cadastrar_usuario(76) Recebida tentativa de cadastro para: Wemerson , CPF: 111.222.333-44
+2025-07-17 10:39:25,921 INFO cadastrar_usuario(94) Usuário 'Wemerson ' (ID: 5) criado no dispositivo. Redirecionando para captura.
+2025-07-17 10:50:02,439 INFO <module>(37) API DomingosAccess iniciada com sucesso.
+2025-07-17 10:51:10,813 INFO cadastrar_usuario(76) Recebida tentativa de cadastro para: Wendel Samora , CPF: 111.222.333-44
+2025-07-17 10:51:10,880 INFO cadastrar_usuario(94) Usuário 'Wendel Samora ' (ID: 6) criado no dispositivo. Redirecionando para captura.
+2025-07-17 10:51:57,396 INFO cadastrar_usuario(76) Recebida tentativa de cadastro para: Wendel Samora dos Santos, CPF: 111.222.333-44
+2025-07-17 10:51:57,501 INFO cadastrar_usuario(94) Usuário 'Wendel Samora dos Santos' (ID: 7) criado no dispositivo. Redirecionando para captura.
+2025-07-17 10:52:17,251 INFO enviar_foto_dispositivo(179) Foto para o User ID 7 enviada com sucesso para o dispositivo.
+2025-07-17 10:53:14,915 INFO <module>(37) API DomingosAccess iniciada com sucesso.
+2025-07-17 10:53:42,437 ERROR enviar_foto_dispositivo(184) Falha ao enviar foto para o dispositivo: ERROR - During Upload Face Image: Erro ao cadastrar: Batch Process Error
+Traceback (most recent call last):
+  File "c:\Users\wendel.santos\Desktop\reconhecimento\Sistema\intelbras_api.py", line 165, in send_face_to_device
+    raise Exception(f"Erro ao cadastrar: {response.text.strip()}")
+Exception: Erro ao cadastrar: Batch Process Error
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\wendel.santos\Desktop\reconhecimento\app.py", line 178, in enviar_foto_dispositivo
+    resultado = api.send_face_to_device(user_id=user_id, image_path=filepath)
+  File "c:\Users\wendel.santos\Desktop\reconhecimento\Sistema\intelbras_api.py", line 170, in send_face_to_device
+    raise Exception(f"ERROR - During Upload Face Image: {e}")
+Exception: ERROR - During Upload Face Image: Erro ao cadastrar: Batch Process Error
+2025-07-17 10:54:09,705 INFO cadastrar_usuario(76) Recebida tentativa de cadastro para: Wendel Samora dos Santos, CPF: 111.222.333-44
+2025-07-17 10:54:09,756 INFO cadastrar_usuario(94) Usuário 'Wendel Samora dos Santos' (ID: 8) criado no dispositivo. Redirecionando para captura.
+2025-07-17 10:54:22,669 INFO enviar_foto_dispositivo(179) Foto para o User ID 8 enviada com sucesso para o dispositivo.
+2025-07-17 14:27:12,190 INFO <module>(37) API DomingosAccess iniciada com sucesso.
+2025-07-17 16:54:40,486 INFO <module>(37) API DomingosAccess iniciada com sucesso.
+2025-07-17 16:57:30,517 INFO cadastrar_usuario(76) Recebida tentativa de cadastro para: Wendel, CPF: 111.222.333-44
+2025-07-17 16:57:30,589 INFO cadastrar_usuario(94) Usuário 'Wendel' (ID: 9) criado no dispositivo. Redirecionando para captura.
+2025-07-17 16:57:45,127 INFO enviar_foto_dispositivo(179) Foto para o User ID 9 enviada com sucesso para o dispositivo.
+2025-07-18 08:12:49,028 INFO <module>(37) API DomingosAccess iniciada com sucesso.
+2025-07-18 08:23:57,361 INFO cadastrar_usuario(76) Recebida tentativa de cadastro para: Wemerson , CPF: 111.222.333-44
+2025-07-18 08:23:57,443 INFO cadastrar_usuario(94) Usuário 'Wemerson ' (ID: 10) criado no dispositivo. Redirecionando para captura.
+2025-07-18 08:24:09,725 INFO enviar_foto_dispositivo(179) Foto para o User ID 10 enviada com sucesso para o dispositivo.
+2025-07-18 08:35:58,287 INFO <module>(37) API DomingosAccess iniciada com sucesso.
+2025-07-18 08:36:29,146 ERROR log_exception(875) Exception on / [GET]
+Traceback (most recent call last):
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\flask_cors\extension.py", line 176, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "c:\Users\wendel.santos\Desktop\reconhecimento\app.py", line 106, in cadastrar_usuario
+    return render_template('index.html')
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\flask\templating.py", line 150, in render_template
+    return _render(app, template, context)
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\flask\templating.py", line 131, in _render
+    rv = template.render(context)
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\jinja2\environment.py", line 1295, in render
+    self.environment.handle_exception()
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "c:\Users\wendel.santos\Desktop\reconhecimento\templates\index.html", line 17, in top-level template code
+    <img src="{{url_for('static', filaname='imagens/Nova_ESD_6.png')}}" alt="Logótipo da Escola" class="school-logo">
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\flask\app.py", line 1121, in url_for
+    return self.handle_url_build_error(error, endpoint, values)
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\flask\app.py", line 1110, in url_for
+    rv = url_adapter.build(  # type: ignore[union-attr]
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\werkzeug\routing\map.py", line 924, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'static' with values ['filaname']. Did you forget to specify values ['filename']?
+2025-07-18 08:36:31,438 ERROR log_exception(875) Exception on / [GET]
+Traceback (most recent call last):
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\flask_cors\extension.py", line 176, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "c:\Users\wendel.santos\Desktop\reconhecimento\app.py", line 106, in cadastrar_usuario
+    return render_template('index.html')
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\flask\templating.py", line 150, in render_template
+    return _render(app, template, context)
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\flask\templating.py", line 131, in _render
+    rv = template.render(context)
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\jinja2\environment.py", line 1295, in render
+    self.environment.handle_exception()
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "c:\Users\wendel.santos\Desktop\reconhecimento\templates\index.html", line 17, in top-level template code
+    <img src="{{url_for('static', filaname='imagens/Nova_ESD_6.png')}}" alt="Logótipo da Escola" class="school-logo">
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\flask\app.py", line 1121, in url_for
+    return self.handle_url_build_error(error, endpoint, values)
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\flask\app.py", line 1110, in url_for
+    rv = url_adapter.build(  # type: ignore[union-attr]
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\werkzeug\routing\map.py", line 924, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'static' with values ['filaname']. Did you forget to specify values ['filename']?
+2025-07-18 08:36:32,739 ERROR log_exception(875) Exception on / [GET]
+Traceback (most recent call last):
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\flask_cors\extension.py", line 176, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "c:\Users\wendel.santos\Desktop\reconhecimento\app.py", line 106, in cadastrar_usuario
+    return render_template('index.html')
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\flask\templating.py", line 150, in render_template
+    return _render(app, template, context)
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\flask\templating.py", line 131, in _render
+    rv = template.render(context)
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\jinja2\environment.py", line 1295, in render
+    self.environment.handle_exception()
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "c:\Users\wendel.santos\Desktop\reconhecimento\templates\index.html", line 17, in top-level template code
+    <img src="{{url_for('static', filaname='imagens/Nova_ESD_6.png')}}" alt="Logótipo da Escola" class="school-logo">
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\flask\app.py", line 1121, in url_for
+    return self.handle_url_build_error(error, endpoint, values)
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\flask\app.py", line 1110, in url_for
+    rv = url_adapter.build(  # type: ignore[union-attr]
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\werkzeug\routing\map.py", line 924, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'static' with values ['filaname']. Did you forget to specify values ['filename']?
+2025-07-18 08:36:57,857 ERROR log_exception(875) Exception on / [GET]
+Traceback (most recent call last):
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\flask_cors\extension.py", line 176, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "c:\Users\wendel.santos\Desktop\reconhecimento\app.py", line 106, in cadastrar_usuario
+    return render_template('index.html')
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\flask\templating.py", line 150, in render_template
+    return _render(app, template, context)
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\flask\templating.py", line 131, in _render
+    rv = template.render(context)
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\jinja2\environment.py", line 1295, in render
+    self.environment.handle_exception()
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "c:\Users\wendel.santos\Desktop\reconhecimento\templates\index.html", line 17, in top-level template code
+    <img src="{{url_for('static', filaname='imagens/Nova_ESD_6.png')}}" alt="Logótipo da Escola" class="school-logo">
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\flask\app.py", line 1121, in url_for
+    return self.handle_url_build_error(error, endpoint, values)
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\flask\app.py", line 1110, in url_for
+    rv = url_adapter.build(  # type: ignore[union-attr]
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\werkzeug\routing\map.py", line 924, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'static' with values ['filaname']. Did you forget to specify values ['filename']?
+2025-07-18 08:37:05,074 ERROR log_exception(875) Exception on / [GET]
+Traceback (most recent call last):
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\flask_cors\extension.py", line 176, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "c:\Users\wendel.santos\Desktop\reconhecimento\app.py", line 106, in cadastrar_usuario
+    return render_template('index.html')
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\flask\templating.py", line 150, in render_template
+    return _render(app, template, context)
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\flask\templating.py", line 131, in _render
+    rv = template.render(context)
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\jinja2\environment.py", line 1295, in render
+    self.environment.handle_exception()
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "c:\Users\wendel.santos\Desktop\reconhecimento\templates\index.html", line 17, in top-level template code
+    <img src="{{url_for('static', filaname='imagens/Nova_ESD_6.png')}}" alt="Logótipo da Escola" class="school-logo">
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\flask\app.py", line 1121, in url_for
+    return self.handle_url_build_error(error, endpoint, values)
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\flask\app.py", line 1110, in url_for
+    rv = url_adapter.build(  # type: ignore[union-attr]
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\werkzeug\routing\map.py", line 924, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'static' with values ['filaname']. Did you forget to specify values ['filename']?
+2025-07-18 08:37:10,399 ERROR log_exception(875) Exception on / [GET]
+Traceback (most recent call last):
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\flask_cors\extension.py", line 176, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "c:\Users\wendel.santos\Desktop\reconhecimento\app.py", line 106, in cadastrar_usuario
+    return render_template('index.html')
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\flask\templating.py", line 150, in render_template
+    return _render(app, template, context)
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\flask\templating.py", line 131, in _render
+    rv = template.render(context)
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\jinja2\environment.py", line 1295, in render
+    self.environment.handle_exception()
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "c:\Users\wendel.santos\Desktop\reconhecimento\templates\index.html", line 17, in top-level template code
+    <img src="{{url_for('static', filaname='imagens/Nova_ESD_6.png')}}" alt="Logótipo da Escola" class="school-logo">
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\flask\app.py", line 1121, in url_for
+    return self.handle_url_build_error(error, endpoint, values)
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\flask\app.py", line 1110, in url_for
+    rv = url_adapter.build(  # type: ignore[union-attr]
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\werkzeug\routing\map.py", line 924, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'static' with values ['filaname']. Did you forget to specify values ['filename']?
+2025-07-18 08:38:12,746 INFO <module>(37) API DomingosAccess iniciada com sucesso.
+2025-07-18 08:55:49,289 INFO cadastrar_usuario(76) Recebida tentativa de cadastro para: Wendel Samora , CPF: 111.222.440-00
+2025-07-18 08:55:49,290 ERROR cadastrar_usuario(99) Falha na Etapa 1 (Cadastro): invalid literal for int() with base 10: ''
+Traceback (most recent call last):
+  File "c:\Users\wendel.santos\Desktop\reconhecimento\app.py", line 83, in cadastrar_usuario
+    user_id = gerar_user_id()
+  File "c:\Users\wendel.santos\Desktop\reconhecimento\app.py", line 59, in gerar_user_id
+    last_id = int(f.read().strip())
+ValueError: invalid literal for int() with base 10: ''
+2025-07-18 08:56:23,275 INFO <module>(37) API DomingosAccess iniciada com sucesso.
+2025-07-18 08:56:57,944 INFO cadastrar_usuario(76) Recebida tentativa de cadastro para: Wendel Samora , CPF: 111.222.440-00
+2025-07-18 08:56:57,945 ERROR cadastrar_usuario(99) Falha na Etapa 1 (Cadastro): invalid literal for int() with base 10: ''
+Traceback (most recent call last):
+  File "c:\Users\wendel.santos\Desktop\reconhecimento\app.py", line 83, in cadastrar_usuario
+    user_id = gerar_user_id()
+  File "c:\Users\wendel.santos\Desktop\reconhecimento\app.py", line 59, in gerar_user_id
+    last_id = int(f.read().strip())
+ValueError: invalid literal for int() with base 10: ''
+2025-07-18 08:57:51,384 INFO cadastrar_usuario(76) Recebida tentativa de cadastro para: Wendel Samora , CPF: 111.222.440-00
+2025-07-18 08:57:51,384 ERROR cadastrar_usuario(99) Falha na Etapa 1 (Cadastro): invalid literal for int() with base 10: ''
+Traceback (most recent call last):
+  File "c:\Users\wendel.santos\Desktop\reconhecimento\app.py", line 83, in cadastrar_usuario
+    user_id = gerar_user_id()
+  File "c:\Users\wendel.santos\Desktop\reconhecimento\app.py", line 59, in gerar_user_id
+    last_id = int(f.read().strip())
+ValueError: invalid literal for int() with base 10: ''
+2025-07-18 08:59:36,489 INFO cadastrar_usuario(76) Recebida tentativa de cadastro para: Wendel Samora , CPF: 111.222.440-00
+2025-07-18 08:59:36,567 INFO cadastrar_usuario(94) Usuário 'Wendel Samora ' (ID: 1) criado no dispositivo. Redirecionando para captura.
+2025-07-18 09:04:04,121 INFO enviar_foto_dispositivo(179) Foto para o User ID 1 enviada com sucesso para o dispositivo.
+2025-07-18 09:12:08,561 INFO cadastrar_usuario(76) Recebida tentativa de cadastro para: Henrique Romano Carneiro, CPF: 132.373.387-61
+2025-07-18 09:12:08,619 INFO cadastrar_usuario(94) Usuário 'Henrique Romano Carneiro' (ID: 2) criado no dispositivo. Redirecionando para captura.
+2025-07-18 09:12:16,544 INFO enviar_foto_dispositivo(179) Foto para o User ID 2 enviada com sucesso para o dispositivo.
+2025-07-18 10:07:39,707 INFO cadastrar_usuario(76) Recebida tentativa de cadastro para: Wendel Samora , CPF: 111.222.440-00
+2025-07-18 10:07:39,772 INFO cadastrar_usuario(94) Usuário 'Wendel Samora ' (ID: 3) criado no dispositivo. Redirecionando para captura.

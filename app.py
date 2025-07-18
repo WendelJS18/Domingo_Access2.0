@@ -7,11 +7,13 @@ from logging.handlers import RotatingFileHandler
 from threading import Lock
 from flask import Flask, request, jsonify, render_template, redirect, url_for, flash
 from datetime import datetime
-from intelbras_api import IntelbrasAccessControlAPI
+from Sistema.intelbras_api import IntelbrasAccessControlAPI
 from flask_cors import CORS
 
 
-app = Flask(__name__)
+app = Flask(__name__, 
+            template_folder='templates', 
+            static_folder='static')
 CORS(app)
 
 
@@ -74,9 +76,9 @@ def cadastrar_usuario():
             app.logger.info(
                 f"Recebida tentativa de cadastro para: {nome}, CPF: {cpf}")
 
-            # ----------------------------------------------------
+           
             #A API DA KINTO
-            #----------------------------------------------------
+          
 
             user_id = gerar_user_id()
 

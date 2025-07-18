@@ -1,0 +1,27 @@
+body, html {
+    height: 100%;
+    background-color: #f0f2f5;
+}
+.school-logo {
+    max-width: 160px;
+    height: auto;
+    margin-bottom: 1.5rem;
+}
+.main-container {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 1.5rem 1rem;
+    min-height: 100vh;
+}
+
+.content-card{
+    max-width: 500px;
+    width: 100%;
+    border: none;
+}
+
+#camera {
+    transform: scaleX(-1);
+    background-color: #333;
+}

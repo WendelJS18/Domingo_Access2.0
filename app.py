@@ -1,12 +1,10 @@
 import os
-import cv2
-import traceback
 import base64
 import logging
+import sqlite3
 from logging.handlers import RotatingFileHandler
 from threading import Lock
 from flask import Flask, request, jsonify, render_template, redirect, url_for, flash
-from datetime import datetime
 from Sistema.intelbras_api import IntelbrasAccessControlAPI
 from flask_cors import CORS
 
@@ -64,7 +62,6 @@ def gerar_user_id():
             f.write(str(new_id))
 
     return str(new_id)
-
 @app.route('/', methods=['GET', 'POST'])
 def cadastrar_usuario():
     if request.method == 'POST':
@@ -75,15 +72,33 @@ def cadastrar_usuario():
 
             app.logger.info(
                 f"Recebida tentativa de cadastro para: {nome}, CPF: {cpf}")
+            
+            #comunica com o banco de dados 
+            connection = sqlite3.connect('domingos_access.db')
+            connection.row_factory = sqlite3.Row
+            cursor = connection.cursor()
 
-           
-            #A API DA KINTO
-          
+            # Verifica se o usuário estar no banco de dados
+            cursor.execute(
+                "SELECT * FROM usuarios_autorizados WHERE cpf = ? AND matricula_aluno = ? AND status = 'Ativo' ", 
+                (cpf, matricula)
+            )
+            usuarios_autorizados = cursor.fetchone()
+            connection.close()
+
+            # Se o usuário for negado
+            if not usuarios_autorizados:
+                app.logger.warning(f"Validação local falhou para o CPF: {cpf} e Matrícula: {matricula}.")
+                flash('Dados Invalidos, não autorizados ou inativos. Verifique suas informações e tente novamente.', 'danger')
+                return redirect(url_for('cadastrar_usuario'))
+
+            #Se o o usuário estiver autorizado             
+            app.logger.info(f"Validação local bem-sucedida para o NOME: {usuarios_autorizados['nome]']}")
 
             user_id = gerar_user_id()
 
             resultado = api.add_user_v2(
-                CardName=nome,
+                CardName=usuarios_autorizados['nome'],
                 UserID=user_id,
                 ValidDateStart='2024-01-01 00:00:00',
                 ValidDateEnd='2037-12-31 23:59:59',
@@ -92,15 +107,12 @@ def cadastrar_usuario():
             )
 
             app.logger.info(
-                f"Usuário '{nome}' (ID: {user_id}) criado no dispositivo. Redirecionando para captura.")
-            return redirect(url_for('captura_page', user_id=user_id, user_name=nome))
+                f"Usuário '{usuarios_autorizados['nome']}' (ID: {user_id}) criado no dispositivo. Redirecionando para captura.")
+            return redirect(url_for('captura_page', user_id=user_id, user_name=usuarios_autorizados))
 
-        except Exception as e:
-            app.logger.error(
-                f"Falha na Etapa 1 (Cadastro): {e}", exc_info=True)
-
-            flash(
-                'Ocorreu um erro ao comunicar com o dispositivo. Tente novamente.', 'danger')
+        except sqlite3.Error as e:
+            app.logger.error(f"Erro no banco de dados SQLite: {e}", exc_info=True)
+            flash('Ocorreu um erro ao aceder à base de dados. Contacte o suporte.', 'danger')
             return redirect(url_for('cadastrar_usuario'))
 
     return render_template('index.html')

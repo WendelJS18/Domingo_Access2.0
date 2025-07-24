@@ -370,3 +370,95 @@ ValueError: invalid literal for int() with base 10: ''
 2025-07-18 09:12:16,544 INFO enviar_foto_dispositivo(179) Foto para o User ID 2 enviada com sucesso para o dispositivo.
 2025-07-18 10:07:39,707 INFO cadastrar_usuario(76) Recebida tentativa de cadastro para: Wendel Samora , CPF: 111.222.440-00
 2025-07-18 10:07:39,772 INFO cadastrar_usuario(94) Usuário 'Wendel Samora ' (ID: 3) criado no dispositivo. Redirecionando para captura.
+2025-07-18 15:31:44,475 INFO <module>(37) API DomingosAccess iniciada com sucesso.
+2025-07-22 10:04:01,396 INFO <module>(37) API DomingosAccess iniciada com sucesso.
+2025-07-22 10:06:33,183 INFO cadastrar_usuario(76) Recebida tentativa de cadastro para: MATHEUS ROCHA DE OLIVEIRA, CPF: 198.903.137-40
+2025-07-22 10:06:33,280 INFO cadastrar_usuario(94) Usuário 'MATHEUS ROCHA DE OLIVEIRA' (ID: 4) criado no dispositivo. Redirecionando para captura.
+2025-07-22 10:06:48,239 INFO enviar_foto_dispositivo(179) Foto para o User ID 4 enviada com sucesso para o dispositivo.
+2025-07-23 15:59:49,674 INFO <module>(35) API DomingosAccess iniciada com sucesso.
+2025-07-23 16:00:34,534 INFO cadastrar_usuario(73) Recebida tentativa de cadastro para: Wendel Samora dos Santos, CPF: 181.055.597-30
+2025-07-23 16:00:34,543 ERROR log_exception(875) Exception on / [POST]
+Traceback (most recent call last):
+  File "c:\Users\wendel.santos\Desktop\reconhecimento\app.py", line 82, in cadastrar_usuario
+    cursor.execute(
+sqlite3.OperationalError: no such table: usarios_autorizados
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\flask_cors\extension.py", line 176, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "c:\Users\wendel.santos\Desktop\reconhecimento\app.py", line 113, in cadastrar_usuario
+    except sqlite3 as e:
+TypeError: catching classes that do not inherit from BaseException is not allowed
+2025-07-23 16:13:57,218 INFO <module>(35) API DomingosAccess iniciada com sucesso.
+2025-07-23 16:14:17,952 INFO cadastrar_usuario(73) Recebida tentativa de cadastro para: Wendel Samora, CPF: 111.222.333-44
+2025-07-23 16:14:17,956 ERROR cadastrar_usuario(114) Erro no banco de dados SQLite: no such table: usarios_autorizados
+Traceback (most recent call last):
+  File "c:\Users\wendel.santos\Desktop\reconhecimento\app.py", line 82, in cadastrar_usuario
+    cursor.execute(
+sqlite3.OperationalError: no such table: usarios_autorizados
+2025-07-23 16:14:44,568 INFO cadastrar_usuario(73) Recebida tentativa de cadastro para: Wendel Samora, CPF: 111.222.333-44
+2025-07-23 16:14:44,568 ERROR cadastrar_usuario(114) Erro no banco de dados SQLite: no such table: usarios_autorizados
+Traceback (most recent call last):
+  File "c:\Users\wendel.santos\Desktop\reconhecimento\app.py", line 82, in cadastrar_usuario
+    cursor.execute(
+sqlite3.OperationalError: no such table: usarios_autorizados
+2025-07-23 16:15:11,100 INFO cadastrar_usuario(73) Recebida tentativa de cadastro para: Wendel Samora, CPF: 111.222.333-44
+2025-07-23 16:15:11,104 ERROR cadastrar_usuario(114) Erro no banco de dados SQLite: no such table: usarios_autorizados
+Traceback (most recent call last):
+  File "c:\Users\wendel.santos\Desktop\reconhecimento\app.py", line 82, in cadastrar_usuario
+    cursor.execute(
+sqlite3.OperationalError: no such table: usarios_autorizados
+2025-07-23 16:43:24,808 INFO <module>(35) API DomingosAccess iniciada com sucesso.
+2025-07-23 16:43:40,145 INFO cadastrar_usuario(73) Recebida tentativa de cadastro para: Wendel Samora, CPF: 111.222.333-44
+2025-07-23 16:43:40,149 ERROR cadastrar_usuario(114) Erro no banco de dados SQLite: no such table: usarios_autorizados
+Traceback (most recent call last):
+  File "c:\Users\wendel.santos\Desktop\reconhecimento\app.py", line 82, in cadastrar_usuario
+    cursor.execute(
+sqlite3.OperationalError: no such table: usarios_autorizados
+2025-07-23 16:47:05,601 INFO <module>(35) API DomingosAccess iniciada com sucesso.
+2025-07-23 16:47:32,056 INFO cadastrar_usuario(73) Recebida tentativa de cadastro para: Wendel Samora, CPF: 111.222.333-44
+2025-07-23 16:47:32,058 ERROR cadastrar_usuario(114) Erro no banco de dados SQLite: no such table: usarios_autorizados
+Traceback (most recent call last):
+  File "c:\Users\wendel.santos\Desktop\reconhecimento\app.py", line 82, in cadastrar_usuario
+    cursor.execute(
+sqlite3.OperationalError: no such table: usarios_autorizados
+2025-07-23 16:54:37,450 INFO <module>(35) API DomingosAccess iniciada com sucesso.
+2025-07-23 16:54:50,389 INFO cadastrar_usuario(73) Recebida tentativa de cadastro para: Wendel Samora, CPF: 111.222.333-44
+2025-07-23 16:54:50,391 ERROR cadastrar_usuario(114) Erro no banco de dados SQLite: no such table: usarios_autorizados
+Traceback (most recent call last):
+  File "c:\Users\wendel.santos\Desktop\reconhecimento\app.py", line 82, in cadastrar_usuario
+    cursor.execute(
+sqlite3.OperationalError: no such table: usarios_autorizados
+2025-07-23 16:55:31,174 INFO <module>(35) API DomingosAccess iniciada com sucesso.
+2025-07-23 16:55:43,574 INFO cadastrar_usuario(73) Recebida tentativa de cadastro para: Wendel Samora, CPF: 111.222.333-44
+2025-07-23 16:55:43,576 ERROR cadastrar_usuario(114) Erro no banco de dados SQLite: no such table: usarios_autorizados
+Traceback (most recent call last):
+  File "c:\Users\wendel.santos\Desktop\reconhecimento\app.py", line 82, in cadastrar_usuario
+    cursor.execute(
+sqlite3.OperationalError: no such table: usarios_autorizados
+2025-07-23 16:56:34,949 INFO <module>(35) API DomingosAccess iniciada com sucesso.
+2025-07-23 16:56:45,782 INFO cadastrar_usuario(73) Recebida tentativa de cadastro para: Wendel Samora, CPF: 111.222.333-44
+2025-07-23 16:56:45,784 ERROR cadastrar_usuario(114) Erro no banco de dados SQLite: no such table: usarios_autorizados
+Traceback (most recent call last):
+  File "c:\Users\wendel.santos\Desktop\reconhecimento\app.py", line 82, in cadastrar_usuario
+    cursor.execute(
+sqlite3.OperationalError: no such table: usarios_autorizados
+2025-07-23 16:57:03,278 INFO <module>(35) API DomingosAccess iniciada com sucesso.
+2025-07-23 16:57:10,529 INFO cadastrar_usuario(73) Recebida tentativa de cadastro para: Wendel Samora, CPF: 111.222.333-44
+2025-07-23 16:57:10,530 WARNING cadastrar_usuario(91) Validação local falhou para o CPF: 111.222.333-44 e Matrícula: 2024001.
+2025-07-23 16:57:48,886 INFO cadastrar_usuario(73) Recebida tentativa de cadastro para: Wendel Samora, CPF: 111.222.333-44
+2025-07-23 16:57:48,888 WARNING cadastrar_usuario(91) Validação local falhou para o CPF: 111.222.333-44 e Matrícula: 2024001.
+2025-07-24 12:48:55,200 INFO <module>(35) API DomingosAccess iniciada com sucesso.
+2025-07-24 12:49:45,816 INFO <module>(35) API DomingosAccess iniciada com sucesso.
+2025-07-24 12:50:05,076 INFO cadastrar_usuario(73) Recebida tentativa de cadastro para: Wendel Samora , CPF: 111.122.222-22
+2025-07-24 12:50:05,088 WARNING cadastrar_usuario(91) Validação local falhou para o CPF: 111.122.222-22 e Matrícula: 121514.

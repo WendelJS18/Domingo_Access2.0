@@ -26,10 +26,11 @@ my_handler.setLevel(logging.INFO)
 app.logger.addHandler(my_handler)
 app.logger.setLevel(logging.INFO)
 
-DEVICE_IP = 'xxx.xxx.xxx.xx'
+DEVICE_IP = '192.168.137.2'
 USERNAME = 'admin'
-PASSWORD = 'xxxxxx'
+PASSWORD = 'Esdo2025'
 
+app.secret_key = 's3cr3t_k3y_f0r_fl4sk'
 api = IntelbrasAccessControlAPI(DEVICE_IP, USERNAME, PASSWORD)
 
 app.logger.info("API DomingosAccess iniciada com sucesso.")
@@ -38,12 +39,12 @@ save_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "s_files")
 if not os.path.exists(save_dir):
     os.makedirs(save_dir)
 
-app.secret_key = '---------'
-
+# Lock para garantir que o ID do usuário seja gerado de forma segura em ambientes multithread
 
 user_id_lock = Lock()
 current_user_id = 1
 
+# Função para gerar um novo ID de usuário
 def gerar_user_id():
     id_path = os.path.join(os.path.dirname(
         os.path.abspath(__file__)), "ultimo_id.txt")
@@ -62,6 +63,8 @@ def gerar_user_id():
             f.write(str(new_id))
 
     return str(new_id)
+
+# Rota principal para cadastro de usuários
 @app.route('/', methods=['GET', 'POST'])
 def cadastrar_usuario():
     if request.method == 'POST':
@@ -72,15 +75,14 @@ def cadastrar_usuario():
 
             app.logger.info(
                 f"Recebida tentativa de cadastro para: {nome}, CPF: {cpf}")
-            
-            #comunica com o banco de dados 
+
             connection = sqlite3.connect('domingos_access.db')
             connection.row_factory = sqlite3.Row
             cursor = connection.cursor()
 
             # Verifica se o usuário estar no banco de dados
             cursor.execute(
-                "SELECT * FROM usuarios_autorizados WHERE cpf = ? AND matricula_aluno = ? AND status = 'Ativo' ", 
+                "SELECT * FROM usuarios_autorizados WHERE cpf = ? AND matricula_aluno = ? AND LOWER(status) = 'ativo' ", 
                 (cpf, matricula)
             )
             usuarios_autorizados = cursor.fetchone()
@@ -93,7 +95,7 @@ def cadastrar_usuario():
                 return redirect(url_for('cadastrar_usuario'))
 
             #Se o o usuário estiver autorizado             
-            app.logger.info(f"Validação local bem-sucedida para o NOME: {usuarios_autorizados['nome]']}")
+            app.logger.info(f"Validação local bem-sucedida para o NOME: {usuarios_autorizados['nome']}")
 
             user_id = gerar_user_id()
 
@@ -108,7 +110,8 @@ def cadastrar_usuario():
 
             app.logger.info(
                 f"Usuário '{usuarios_autorizados['nome']}' (ID: {user_id}) criado no dispositivo. Redirecionando para captura.")
-            return redirect(url_for('captura_page', user_id=user_id, user_name=usuarios_autorizados))
+            return redirect(url_for('captura_page', user_id=user_id, user_name=usuarios_autorizados['nome']))
+
 
         except sqlite3.Error as e:
             app.logger.error(f"Erro no banco de dados SQLite: {e}", exc_info=True)
@@ -117,7 +120,7 @@ def cadastrar_usuario():
 
     return render_template('index.html')
 
-
+# Rota para a página de captura de foto
 @app.route('/captura')
 def captura_page():
     return render_template('captura.html')
@@ -137,6 +140,7 @@ def ping_dispositivo():
         app.logger.error(
             f"Ocorreu um erro não esperado ao cadastrar usuário: {e}", exc_info=True)
         return jsonify({'status': 'erro', 'mensagem': str(e)}), 500
+
 
 @app.route('/listar_usuarios', methods=['GET'])
 def listar_usuarios():

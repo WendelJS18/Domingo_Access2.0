@@ -1,6 +1,6 @@
 2025-07-29 13:30:22,935 INFO <module>(35) API DomingosAccess iniciada com sucesso.2025-07-29 13:39:55,058 INFO <module>(35) API DomingosAccess iniciada com sucesso.
 2025-07-29 13:39:57,774 INFO cadastrar_usuario(75) Recebida tentativa de cadastro para: Wendel Samora, CPF: 111.222.333-44
-2025-07-29 13:39:57,788 WARNING cadastrar_usuario(92) Validação local falhou para o CPF: 111.222.333-44 e Matrícula: 2024001.
+2025-07-29 13:39:57,788 WARNING cadastrar_usuario(92) Validaï¿½ï¿½o local falhou para o CPF: 111.222.333-44 e Matrï¿½cula: 2024001.
 2025-07-29 13:39:57,788 ERROR log_exception(875) Exception on / [POST]
 Traceback (most recent call last):
   File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\flask\app.py", line 1511, in wsgi_app
@@ -14,14 +14,14 @@ Traceback (most recent call last):
   File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\flask\app.py", line 902, in dispatch_request
     return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
   File "c:\Users\wendel.santos\Desktop\reconhecimento\app.py", line 93, in cadastrar_usuario
-    flash('Dados Invalidos, não autorizados ou inativos. Verifique suas informações e tente novamente.', 'danger')
+    flash('Dados Invalidos, nï¿½o autorizados ou inativos. Verifique suas informaï¿½ï¿½es e tente novamente.', 'danger')
   File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\flask\helpers.py", line 335, in flash
     session["_flashes"] = flashes
   File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\flask\sessions.py", line 104, in _fail
     raise RuntimeError(
 RuntimeError: The session is unavailable because no secret key was set.  Set the secret_key on the application to something unique and secret.
 2025-07-29 13:39:59,954 INFO cadastrar_usuario(75) Recebida tentativa de cadastro para: Wendel Samora, CPF: 111.222.333-44
-2025-07-29 13:39:59,955 WARNING cadastrar_usuario(92) Validação local falhou para o CPF: 111.222.333-44 e Matrícula: 2024001.
+2025-07-29 13:39:59,955 WARNING cadastrar_usuario(92) Validaï¿½ï¿½o local falhou para o CPF: 111.222.333-44 e Matrï¿½cula: 2024001.
 2025-07-29 13:39:59,956 ERROR log_exception(875) Exception on / [POST]
 Traceback (most recent call last):
   File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\flask\app.py", line 1511, in wsgi_app
@@ -35,14 +35,14 @@ Traceback (most recent call last):
   File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\flask\app.py", line 902, in dispatch_request
     return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
   File "c:\Users\wendel.santos\Desktop\reconhecimento\app.py", line 93, in cadastrar_usuario
-    flash('Dados Invalidos, não autorizados ou inativos. Verifique suas informações e tente novamente.', 'danger')
+    flash('Dados Invalidos, nï¿½o autorizados ou inativos. Verifique suas informaï¿½ï¿½es e tente novamente.', 'danger')
   File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\flask\helpers.py", line 335, in flash
     session["_flashes"] = flashes
   File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\flask\sessions.py", line 104, in _fail
     raise RuntimeError(
 RuntimeError: The session is unavailable because no secret key was set.  Set the secret_key on the application to something unique and secret.
 2025-07-29 13:41:00,842 INFO cadastrar_usuario(75) Recebida tentativa de cadastro para: Wendel Samora, CPF: 111.222.333-44
-2025-07-29 13:41:00,843 WARNING cadastrar_usuario(92) Validação local falhou para o CPF: 111.222.333-44 e Matrícula: 2024001.
+2025-07-29 13:41:00,843 WARNING cadastrar_usuario(92) Validaï¿½ï¿½o local falhou para o CPF: 111.222.333-44 e Matrï¿½cula: 2024001.
 2025-07-29 13:41:00,845 ERROR log_exception(875) Exception on / [POST]
 Traceback (most recent call last):
   File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\flask\app.py", line 1511, in wsgi_app
@@ -56,7 +56,7 @@ Traceback (most recent call last):
   File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\flask\app.py", line 902, in dispatch_request
     return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
   File "c:\Users\wendel.santos\Desktop\reconhecimento\app.py", line 93, in cadastrar_usuario
-    flash('Dados Invalidos, não autorizados ou inativos. Verifique suas informações e tente novamente.', 'danger')
+    flash('Dados Invalidos, nï¿½o autorizados ou inativos. Verifique suas informaï¿½ï¿½es e tente novamente.', 'danger')
   File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\flask\helpers.py", line 335, in flash
     session["_flashes"] = flashes
   File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\flask\sessions.py", line 104, in _fail
@@ -64,12 +64,12 @@ Traceback (most recent call last):
 RuntimeError: The session is unavailable because no secret key was set.  Set the secret_key on the application to something unique and secret.
 2025-07-29 14:03:25,885 INFO <module>(36) API DomingosAccess iniciada com sucesso.
 2025-07-29 14:04:01,509 INFO cadastrar_usuario(76) Recebida tentativa de cadastro para: Wendel Samora, CPF: 111.222.333-44
-2025-07-29 14:04:01,510 WARNING cadastrar_usuario(93) Validação local falhou para o CPF: 111.222.333-44 e Matrícula: 2024001.
+2025-07-29 14:04:01,510 WARNING cadastrar_usuario(93) Validaï¿½ï¿½o local falhou para o CPF: 111.222.333-44 e Matrï¿½cula: 2024001.
 2025-07-29 15:35:50,871 INFO cadastrar_usuario(76) Recebida tentativa de cadastro para: Wendel Samora , CPF: 111.222.333-44
-2025-07-29 15:35:50,875 WARNING cadastrar_usuario(93) Validação local falhou para o CPF: 111.222.333-44 e Matrícula: 2024001.
+2025-07-29 15:35:50,875 WARNING cadastrar_usuario(93) Validaï¿½ï¿½o local falhou para o CPF: 111.222.333-44 e Matrï¿½cula: 2024001.
 2025-07-29 15:35:59,126 INFO <module>(36) API DomingosAccess iniciada com sucesso.
 2025-07-29 15:36:40,343 INFO cadastrar_usuario(76) Recebida tentativa de cadastro para: Wendel Samora , CPF: 111.222.333-44
-2025-07-29 15:36:40,347 INFO cadastrar_usuario(98) Validação local bem-sucedida para o NOME: Wendel Samora
+2025-07-29 15:36:40,347 INFO cadastrar_usuario(98) Validaï¿½ï¿½o local bem-sucedida para o NOME: Wendel Samora
 2025-07-29 15:37:00,367 ERROR log_exception(875) Exception on / [POST]
 Traceback (most recent call last):
   File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\urllib3\connection.py", line 198, in _new_conn
@@ -148,8 +148,125 @@ Traceback (most recent call last):
     raise Exception("ERROR - During Add New User using V2 command - ")
 Exception: ERROR - During Add New User using V2 command - 
 2025-07-29 15:38:41,377 INFO cadastrar_usuario(76) Recebida tentativa de cadastro para: Wendel Samora , CPF: 111.222.333-44
-2025-07-29 15:38:41,377 INFO cadastrar_usuario(98) Validação local bem-sucedida para o NOME: Wendel Samora
+2025-07-29 15:38:41,377 INFO cadastrar_usuario(98) Validaï¿½ï¿½o local bem-sucedida para o NOME: Wendel Samora
 2025-07-29 15:38:43,443 ERROR log_exception(875) Exception on / [POST]
+Traceback (most recent call last):
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\urllib3\connection.py", line 198, in _new_conn
+    sock = connection.create_connection(
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\urllib3\util\connection.py", line 85, in create_connection
+    raise err
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\urllib3\util\connection.py", line 73, in create_connection
+    sock.connect(sa)
+ConnectionRefusedError: [WinError 10061] Nenhuma conexï¿½o pï¿½de ser feita porque a mï¿½quina de destino as recusou ativamente
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\urllib3\connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\urllib3\connectionpool.py", line 493, in _make_request
+    conn.request(
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\urllib3\connection.py", line 445, in request
+    self.endheaders()
+  File "C:\Users\wendel.santos\AppData\Local\Programs\Python\Python310\lib\http\client.py", line 1271, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "C:\Users\wendel.santos\AppData\Local\Programs\Python\Python310\lib\http\client.py", line 1031, in _send_output
+    self.send(msg)
+  File "C:\Users\wendel.santos\AppData\Local\Programs\Python\Python310\lib\http\client.py", line 969, in send
+    self.connect()
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\urllib3\connection.py", line 276, in connect
+    self.sock = self._new_conn()
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\urllib3\connection.py", line 213, in _new_conn
+    raise NewConnectionError(
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPConnection object at 0x00000292A31961D0>: Failed to establish a new connection: [WinError 10061] Nenhuma conexï¿½o pï¿½de ser feita porque a mï¿½quina de destino as recusou ativamente
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\requests\adapters.py", line 667, in send
+    resp = conn.urlopen(
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\urllib3\connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\urllib3\util\retry.py", line 519, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='192.168.137.2', port=80): Max retries exceeded with url: /cgi-bin/AccessUser.cgi?action=insertMulti (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x00000292A31961D0>: Failed to establish a new connection: [WinError 10061] Nenhuma conexï¿½o pï¿½de ser feita porque a mï¿½quina de destino as recusou ativamente'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\wendel.santos\Desktop\reconhecimento\Sistema\intelbras_api.py", line 58, in add_user_v2
+    result = requests.get(
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\requests\api.py", line 73, in get
+    return request("get", url, params=params, **kwargs)
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\requests\api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\requests\sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\requests\adapters.py", line 700, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPConnectionPool(host='192.168.137.2', port=80): Max retries exceeded with url: /cgi-bin/AccessUser.cgi?action=insertMulti (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x00000292A31961D0>: Failed to establish a new connection: [WinError 10061] Nenhuma conexï¿½o pï¿½de ser feita porque a mï¿½quina de destino as recusou ativamente'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\flask_cors\extension.py", line 176, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "c:\Users\wendel.santos\Desktop\reconhecimento\app.py", line 102, in cadastrar_usuario
+    resultado = api.add_user_v2(
+  File "c:\Users\wendel.santos\Desktop\reconhecimento\Sistema\intelbras_api.py", line 65, in add_user_v2
+    raise Exception("ERROR - During Add New User using V2 command - ")
+Exception: ERROR - During Add New User using V2 command - 
+2025-07-29 15:38:46,233 INFO cadastrar_usuario(76) Recebida tentativa de cadastro para: Wendel Samora , CPF: 111.222.333-44
+2025-07-29 15:38:46,235 INFO cadastrar_usuario(98) Validaï¿½ï¿½o local bem-sucedida para o NOME: Wendel Samora
+2025-07-29 15:38:46,402 INFO cadastrar_usuario(111) Usuï¿½rio 'Wendel Samora' (ID: 7) criado no dispositivo. Redirecionando para captura.
+2025-07-29 15:41:42,322 INFO cadastrar_usuario(76) Recebida tentativa de cadastro para: Wemerson , CPF: 111.222.333-44
+2025-07-29 15:41:42,324 WARNING cadastrar_usuario(93) Validaï¿½ï¿½o local falhou para o CPF: 111.222.333-44 e Matrï¿½cula: 18181818.
+2025-07-29 15:42:19,116 INFO cadastrar_usuario(76) Recebida tentativa de cadastro para: Wemerson , CPF: 555.666.777-88
+2025-07-29 15:42:19,118 INFO cadastrar_usuario(98) Validaï¿½ï¿½o local bem-sucedida para o NOME: Wemerson Thiago
+2025-07-29 15:42:19,234 INFO cadastrar_usuario(111) Usuï¿½rio 'Wemerson Thiago' (ID: 8) criado no dispositivo. Redirecionando para captura.
+2025-07-29 16:07:52,938 INFO <module>(36) API DomingosAccess iniciada com sucesso.
+2025-07-29 16:08:06,597 INFO cadastrar_usuario(76) Recebida tentativa de cadastro para: Wendel Samora , CPF: 111.222.333-44
+2025-07-29 16:08:06,598 INFO cadastrar_usuario(98) Validaï¿½ï¿½o local bem-sucedida para o NOME: Wendel Samora
+2025-07-29 16:08:06,675 INFO cadastrar_usuario(111) Usuï¿½rio 'Wendel Samora' (ID: 9) criado no dispositivo. Redirecionando para captura.
+2025-07-29 16:13:40,432 INFO cadastrar_usuario(76) Recebida tentativa de cadastro para: Wendel Samora , CPF: 111.222.333-44
+2025-07-29 16:13:40,435 INFO cadastrar_usuario(98) Validaï¿½ï¿½o local bem-sucedida para o NOME: Wendel Samora
+2025-07-29 16:13:40,538 INFO cadastrar_usuario(111) Usuï¿½rio 'Wendel Samora' (ID: 10) criado no dispositivo. Redirecionando para captura.
+2025-07-29 16:15:06,015 INFO <module>(36) API DomingosAccess iniciada com sucesso.
+2025-07-29 16:18:26,132 INFO cadastrar_usuario(76) Recebida tentativa de cadastro para: Wendel Samora , CPF: 111.222.333-44
+2025-07-29 16:18:26,134 INFO cadastrar_usuario(98) Validaï¿½ï¿½o local bem-sucedida para o NOME: Wendel Samora
+2025-07-29 16:18:26,232 INFO cadastrar_usuario(111) Usuï¿½rio 'Wendel Samora' (ID: 11) criado no dispositivo. Redirecionando para captura.
+2025-07-29 16:19:02,861 INFO <module>(36) API DomingosAccess iniciada com sucesso.
+2025-07-29 16:19:17,936 INFO <module>(36) API DomingosAccess iniciada com sucesso.
+2025-07-29 16:19:27,457 INFO cadastrar_usuario(76) Recebida tentativa de cadastro para: Wendel Samora , CPF: 111.222.333-44
+2025-07-29 16:19:27,459 INFO cadastrar_usuario(98) Validaï¿½ï¿½o local bem-sucedida para o NOME: Wendel Samora
+2025-07-29 16:19:27,533 INFO cadastrar_usuario(111) Usuï¿½rio 'Wendel Samora' (ID: 12) criado no dispositivo. Redirecionando para captura.
+2025-07-29 16:19:52,922 INFO cadastrar_usuario(76) Recebida tentativa de cadastro para: Wendel Samora , CPF: 111.222.333-44
+2025-07-29 16:19:52,923 INFO cadastrar_usuario(98) Validaï¿½ï¿½o local bem-sucedida para o NOME: Wendel Samora
+2025-07-29 16:19:53,005 INFO cadastrar_usuario(111) Usuï¿½rio 'Wendel Samora' (ID: 13) criado no dispositivo. Redirecionando para captura.
+2025-07-30 10:31:24,151 INFO <module>(36) API DomingosAccess iniciada com sucesso.
+2025-07-30 10:48:50,639 INFO cadastrar_usuario(76) Recebida tentativa de cadastro para: Wendel Samora , CPF: 111.222.333-44
+2025-07-30 10:48:50,644 INFO cadastrar_usuario(98) Validaï¿½ï¿½o local bem-sucedida para o NOME: Wendel Samora
+2025-07-30 10:48:50,822 INFO cadastrar_usuario(111) Usuï¿½rio 'Wendel Samora' (ID: 14) criado no dispositivo. Redirecionando para captura.2025-07-30 14:24:57,928 INFO <module>(36) API DomingosAccess iniciada com sucesso.
+2025-07-30 14:25:56,920 INFO cadastrar_usuario(76) Recebida tentativa de cadastro para: Wendel Samora , CPF: 111.222.333-44
+2025-07-30 14:25:56,921 INFO cadastrar_usuario(98) Validação local bem-sucedida para o NOME: Wendel Samora
+2025-07-30 14:25:57,080 INFO cadastrar_usuario(111) Usuário 'Wendel Samora' (ID: 17) criado no dispositivo. Redirecionando para captura.
+2025-07-30 14:26:32,393 INFO enviar_foto_dispositivo(195) Foto para o User ID 17 enviada com sucesso para o dispositivo.
+2025-07-30 14:28:08,611 INFO cadastrar_usuario(76) Recebida tentativa de cadastro para: João Henrique, CPF: 111.222.333-44
+2025-07-30 14:28:08,613 INFO cadastrar_usuario(98) Validação local bem-sucedida para o NOME: Wendel Samora
+2025-07-30 14:28:08,720 INFO cadastrar_usuario(111) Usuário 'Wendel Samora' (ID: 18) criado no dispositivo. Redirecionando para captura.
+2025-07-30 14:57:34,055 INFO cadastrar_usuario(76) Recebida tentativa de cadastro para: ISABELLA CARVALHO, CPF: 111.222.333-44
+2025-07-30 14:57:34,058 INFO cadastrar_usuario(98) Validação local bem-sucedida para o NOME: Wendel Samora
+2025-07-30 14:57:36,092 ERROR log_exception(875) Exception on / [POST]
 Traceback (most recent call last):
   File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\urllib3\connection.py", line 198, in _new_conn
     sock = connection.create_connection(
@@ -178,7 +295,7 @@ Traceback (most recent call last):
     self.sock = self._new_conn()
   File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\urllib3\connection.py", line 213, in _new_conn
     raise NewConnectionError(
-urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPConnection object at 0x00000292A31961D0>: Failed to establish a new connection: [WinError 10061] Nenhuma conexão pôde ser feita porque a máquina de destino as recusou ativamente
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPConnection object at 0x0000026796C074F0>: Failed to establish a new connection: [WinError 10061] Nenhuma conexão pôde ser feita porque a máquina de destino as recusou ativamente
 
 The above exception was the direct cause of the following exception:
 
@@ -189,7 +306,7 @@ Traceback (most recent call last):
     retries = retries.increment(
   File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\urllib3\util\retry.py", line 519, in increment
     raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
-urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='192.168.137.2', port=80): Max retries exceeded with url: /cgi-bin/AccessUser.cgi?action=insertMulti (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x00000292A31961D0>: Failed to establish a new connection: [WinError 10061] Nenhuma conexão pôde ser feita porque a máquina de destino as recusou ativamente'))
+urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='192.168.137.2', port=80): Max retries exceeded with url: /cgi-bin/AccessUser.cgi?action=insertMulti (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000026796C074F0>: Failed to establish a new connection: [WinError 10061] Nenhuma conexão pôde ser feita porque a máquina de destino as recusou ativamente'))
 
 During handling of the above exception, another exception occurred:
 
@@ -206,7 +323,7 @@ Traceback (most recent call last):
     r = adapter.send(request, **kwargs)
   File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\requests\adapters.py", line 700, in send
     raise ConnectionError(e, request=request)
-requests.exceptions.ConnectionError: HTTPConnectionPool(host='192.168.137.2', port=80): Max retries exceeded with url: /cgi-bin/AccessUser.cgi?action=insertMulti (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x00000292A31961D0>: Failed to establish a new connection: [WinError 10061] Nenhuma conexão pôde ser feita porque a máquina de destino as recusou ativamente'))
+requests.exceptions.ConnectionError: HTTPConnectionPool(host='192.168.137.2', port=80): Max retries exceeded with url: /cgi-bin/AccessUser.cgi?action=insertMulti (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000026796C074F0>: Failed to establish a new connection: [WinError 10061] Nenhuma conexão pôde ser feita porque a máquina de destino as recusou ativamente'))
 
 During handling of the above exception, another exception occurred:
 
@@ -226,34 +343,368 @@ Traceback (most recent call last):
   File "c:\Users\wendel.santos\Desktop\reconhecimento\Sistema\intelbras_api.py", line 65, in add_user_v2
     raise Exception("ERROR - During Add New User using V2 command - ")
 Exception: ERROR - During Add New User using V2 command - 
-2025-07-29 15:38:46,233 INFO cadastrar_usuario(76) Recebida tentativa de cadastro para: Wendel Samora , CPF: 111.222.333-44
-2025-07-29 15:38:46,235 INFO cadastrar_usuario(98) Validação local bem-sucedida para o NOME: Wendel Samora
-2025-07-29 15:38:46,402 INFO cadastrar_usuario(111) Usuário 'Wendel Samora' (ID: 7) criado no dispositivo. Redirecionando para captura.
-2025-07-29 15:41:42,322 INFO cadastrar_usuario(76) Recebida tentativa de cadastro para: Wemerson , CPF: 111.222.333-44
-2025-07-29 15:41:42,324 WARNING cadastrar_usuario(93) Validação local falhou para o CPF: 111.222.333-44 e Matrícula: 18181818.
-2025-07-29 15:42:19,116 INFO cadastrar_usuario(76) Recebida tentativa de cadastro para: Wemerson , CPF: 555.666.777-88
-2025-07-29 15:42:19,118 INFO cadastrar_usuario(98) Validação local bem-sucedida para o NOME: Wemerson Thiago
-2025-07-29 15:42:19,234 INFO cadastrar_usuario(111) Usuário 'Wemerson Thiago' (ID: 8) criado no dispositivo. Redirecionando para captura.
-2025-07-29 16:07:52,938 INFO <module>(36) API DomingosAccess iniciada com sucesso.
-2025-07-29 16:08:06,597 INFO cadastrar_usuario(76) Recebida tentativa de cadastro para: Wendel Samora , CPF: 111.222.333-44
-2025-07-29 16:08:06,598 INFO cadastrar_usuario(98) Validação local bem-sucedida para o NOME: Wendel Samora
-2025-07-29 16:08:06,675 INFO cadastrar_usuario(111) Usuário 'Wendel Samora' (ID: 9) criado no dispositivo. Redirecionando para captura.
-2025-07-29 16:13:40,432 INFO cadastrar_usuario(76) Recebida tentativa de cadastro para: Wendel Samora , CPF: 111.222.333-44
-2025-07-29 16:13:40,435 INFO cadastrar_usuario(98) Validação local bem-sucedida para o NOME: Wendel Samora
-2025-07-29 16:13:40,538 INFO cadastrar_usuario(111) Usuário 'Wendel Samora' (ID: 10) criado no dispositivo. Redirecionando para captura.
-2025-07-29 16:15:06,015 INFO <module>(36) API DomingosAccess iniciada com sucesso.
-2025-07-29 16:18:26,132 INFO cadastrar_usuario(76) Recebida tentativa de cadastro para: Wendel Samora , CPF: 111.222.333-44
-2025-07-29 16:18:26,134 INFO cadastrar_usuario(98) Validação local bem-sucedida para o NOME: Wendel Samora
-2025-07-29 16:18:26,232 INFO cadastrar_usuario(111) Usuário 'Wendel Samora' (ID: 11) criado no dispositivo. Redirecionando para captura.
-2025-07-29 16:19:02,861 INFO <module>(36) API DomingosAccess iniciada com sucesso.
-2025-07-29 16:19:17,936 INFO <module>(36) API DomingosAccess iniciada com sucesso.
-2025-07-29 16:19:27,457 INFO cadastrar_usuario(76) Recebida tentativa de cadastro para: Wendel Samora , CPF: 111.222.333-44
-2025-07-29 16:19:27,459 INFO cadastrar_usuario(98) Validação local bem-sucedida para o NOME: Wendel Samora
-2025-07-29 16:19:27,533 INFO cadastrar_usuario(111) Usuário 'Wendel Samora' (ID: 12) criado no dispositivo. Redirecionando para captura.
-2025-07-29 16:19:52,922 INFO cadastrar_usuario(76) Recebida tentativa de cadastro para: Wendel Samora , CPF: 111.222.333-44
-2025-07-29 16:19:52,923 INFO cadastrar_usuario(98) Validação local bem-sucedida para o NOME: Wendel Samora
-2025-07-29 16:19:53,005 INFO cadastrar_usuario(111) Usuário 'Wendel Samora' (ID: 13) criado no dispositivo. Redirecionando para captura.
-2025-07-30 10:31:24,151 INFO <module>(36) API DomingosAccess iniciada com sucesso.
-2025-07-30 10:48:50,639 INFO cadastrar_usuario(76) Recebida tentativa de cadastro para: Wendel Samora , CPF: 111.222.333-44
-2025-07-30 10:48:50,644 INFO cadastrar_usuario(98) Validação local bem-sucedida para o NOME: Wendel Samora
-2025-07-30 10:48:50,822 INFO cadastrar_usuario(111) Usuário 'Wendel Samora' (ID: 14) criado no dispositivo. Redirecionando para captura.
+2025-07-30 14:57:41,819 INFO cadastrar_usuario(76) Recebida tentativa de cadastro para: ISABELLA CARVALHO, CPF: 111.222.333-44
+2025-07-30 14:57:41,820 INFO cadastrar_usuario(98) Validação local bem-sucedida para o NOME: Wendel Samora
+2025-07-30 14:57:43,858 ERROR log_exception(875) Exception on / [POST]
+Traceback (most recent call last):
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\urllib3\connection.py", line 198, in _new_conn
+    sock = connection.create_connection(
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\urllib3\util\connection.py", line 85, in create_connection
+    raise err
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\urllib3\util\connection.py", line 73, in create_connection
+    sock.connect(sa)
+ConnectionRefusedError: [WinError 10061] Nenhuma conexão pôde ser feita porque a máquina de destino as recusou ativamente
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\urllib3\connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\urllib3\connectionpool.py", line 493, in _make_request
+    conn.request(
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\urllib3\connection.py", line 445, in request
+    self.endheaders()
+  File "C:\Users\wendel.santos\AppData\Local\Programs\Python\Python310\lib\http\client.py", line 1271, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "C:\Users\wendel.santos\AppData\Local\Programs\Python\Python310\lib\http\client.py", line 1031, in _send_output
+    self.send(msg)
+  File "C:\Users\wendel.santos\AppData\Local\Programs\Python\Python310\lib\http\client.py", line 969, in send
+    self.connect()
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\urllib3\connection.py", line 276, in connect
+    self.sock = self._new_conn()
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\urllib3\connection.py", line 213, in _new_conn
+    raise NewConnectionError(
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPConnection object at 0x0000026796CFA770>: Failed to establish a new connection: [WinError 10061] Nenhuma conexão pôde ser feita porque a máquina de destino as recusou ativamente
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\requests\adapters.py", line 667, in send
+    resp = conn.urlopen(
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\urllib3\connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\urllib3\util\retry.py", line 519, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='192.168.137.2', port=80): Max retries exceeded with url: /cgi-bin/AccessUser.cgi?action=insertMulti (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000026796CFA770>: Failed to establish a new connection: [WinError 10061] Nenhuma conexão pôde ser feita porque a máquina de destino as recusou ativamente'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\wendel.santos\Desktop\reconhecimento\Sistema\intelbras_api.py", line 58, in add_user_v2
+    result = requests.get(
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\requests\api.py", line 73, in get
+    return request("get", url, params=params, **kwargs)
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\requests\api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\requests\sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\requests\adapters.py", line 700, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPConnectionPool(host='192.168.137.2', port=80): Max retries exceeded with url: /cgi-bin/AccessUser.cgi?action=insertMulti (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000026796CFA770>: Failed to establish a new connection: [WinError 10061] Nenhuma conexão pôde ser feita porque a máquina de destino as recusou ativamente'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\flask_cors\extension.py", line 176, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "c:\Users\wendel.santos\Desktop\reconhecimento\app.py", line 102, in cadastrar_usuario
+    resultado = api.add_user_v2(
+  File "c:\Users\wendel.santos\Desktop\reconhecimento\Sistema\intelbras_api.py", line 65, in add_user_v2
+    raise Exception("ERROR - During Add New User using V2 command - ")
+Exception: ERROR - During Add New User using V2 command - 
+2025-07-30 14:58:07,988 INFO cadastrar_usuario(76) Recebida tentativa de cadastro para: ISABELLA CARVALHO, CPF: 111.222.333-44
+2025-07-30 14:58:07,989 INFO cadastrar_usuario(98) Validação local bem-sucedida para o NOME: Wendel Samora
+2025-07-30 14:58:08,134 INFO cadastrar_usuario(111) Usuário 'Wendel Samora' (ID: 21) criado no dispositivo. Redirecionando para captura.
+2025-07-30 14:58:24,009 INFO enviar_foto_dispositivo(195) Foto para o User ID 21 enviada com sucesso para o dispositivo.
+2025-08-01 11:09:27,520 INFO <module>(36) API DomingosAccess iniciada com sucesso.
+2025-08-01 11:10:38,545 INFO <module>(36) API DomingosAccess iniciada com sucesso.
+2025-08-01 11:11:52,951 INFO cadastrar_usuario(76) Recebida tentativa de cadastro para: MATHEUS ROCHA DE OLIVEIRA, CPF: 198.903.13
+2025-08-01 11:11:52,974 WARNING cadastrar_usuario(93) Validação local falhou para o CPF: 198.903.13 e Matrícula: 111111.
+2025-08-01 11:20:42,309 INFO cadastrar_usuario(76) Recebida tentativa de cadastro para: Matheus Rocha , CPF: 999.100.111-12
+2025-08-01 11:20:42,312 WARNING cadastrar_usuario(93) Validação local falhou para o CPF: 999.100.111-12 e Matrícula: 2024003.
+2025-08-01 11:20:53,231 INFO <module>(36) API DomingosAccess iniciada com sucesso.
+2025-08-01 11:21:28,732 INFO cadastrar_usuario(76) Recebida tentativa de cadastro para: Matheus Rocha , CPF: 999.100.111-12
+2025-08-01 11:21:28,733 WARNING cadastrar_usuario(93) Validação local falhou para o CPF: 999.100.111-12 e Matrícula: 2024003.
+2025-08-01 11:41:38,119 INFO cadastrar_usuario(76) Recebida tentativa de cadastro para: Matheus Rocha , CPF: 999.100.111-12
+2025-08-01 11:41:38,121 WARNING cadastrar_usuario(93) Validação local falhou para o CPF: 999.100.111-12 e Matrícula: 2024003.
+2025-08-01 11:42:08,502 INFO <module>(36) API DomingosAccess iniciada com sucesso.
+2025-08-01 11:42:37,287 INFO cadastrar_usuario(76) Recebida tentativa de cadastro para: Matheus Rocha , CPF: 999.100.111-12
+2025-08-01 11:42:37,289 WARNING cadastrar_usuario(93) Validação local falhou para o CPF: 999.100.111-12 e Matrícula: 2024003.
+2025-08-01 11:44:49,061 INFO cadastrar_usuario(76) Recebida tentativa de cadastro para: Matheus Rocha , CPF: 999.100.111-12
+2025-08-01 11:44:49,066 INFO cadastrar_usuario(98) Validação local bem-sucedida para o NOME: Matheus Rocha
+2025-08-01 11:45:03,687 INFO cadastrar_usuario(76) Recebida tentativa de cadastro para: Matheus Rocha , CPF: 999.100.111-12
+2025-08-01 11:45:03,688 INFO cadastrar_usuario(98) Validação local bem-sucedida para o NOME: Matheus Rocha
+2025-08-01 11:45:09,093 ERROR log_exception(875) Exception on / [POST]
+Traceback (most recent call last):
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\urllib3\connection.py", line 198, in _new_conn
+    sock = connection.create_connection(
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\urllib3\util\connection.py", line 85, in create_connection
+    raise err
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\urllib3\util\connection.py", line 73, in create_connection
+    sock.connect(sa)
+TimeoutError: timed out
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\urllib3\connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\urllib3\connectionpool.py", line 493, in _make_request
+    conn.request(
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\urllib3\connection.py", line 445, in request
+    self.endheaders()
+  File "C:\Users\wendel.santos\AppData\Local\Programs\Python\Python310\lib\http\client.py", line 1271, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "C:\Users\wendel.santos\AppData\Local\Programs\Python\Python310\lib\http\client.py", line 1031, in _send_output
+    self.send(msg)
+  File "C:\Users\wendel.santos\AppData\Local\Programs\Python\Python310\lib\http\client.py", line 969, in send
+    self.connect()
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\urllib3\connection.py", line 276, in connect
+    self.sock = self._new_conn()
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\urllib3\connection.py", line 207, in _new_conn
+    raise ConnectTimeoutError(
+urllib3.exceptions.ConnectTimeoutError: (<urllib3.connection.HTTPConnection object at 0x0000014A80BC7A00>, 'Connection to 192.168.137.2 timed out. (connect timeout=20)')
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\requests\adapters.py", line 667, in send
+    resp = conn.urlopen(
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\urllib3\connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\urllib3\util\retry.py", line 519, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='192.168.137.2', port=80): Max retries exceeded with url: /cgi-bin/AccessUser.cgi?action=insertMulti (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x0000014A80BC7A00>, 'Connection to 192.168.137.2 timed out. (connect timeout=20)'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\wendel.santos\Desktop\reconhecimento\Sistema\intelbras_api.py", line 58, in add_user_v2
+    result = requests.get(
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\requests\api.py", line 73, in get
+    return request("get", url, params=params, **kwargs)
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\requests\api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\requests\sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\requests\adapters.py", line 688, in send
+    raise ConnectTimeout(e, request=request)
+requests.exceptions.ConnectTimeout: HTTPConnectionPool(host='192.168.137.2', port=80): Max retries exceeded with url: /cgi-bin/AccessUser.cgi?action=insertMulti (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x0000014A80BC7A00>, 'Connection to 192.168.137.2 timed out. (connect timeout=20)'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\flask_cors\extension.py", line 176, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "c:\Users\wendel.santos\Desktop\reconhecimento\app.py", line 102, in cadastrar_usuario
+    resultado = api.add_user_v2(
+  File "c:\Users\wendel.santos\Desktop\reconhecimento\Sistema\intelbras_api.py", line 65, in add_user_v2
+    raise Exception("ERROR - During Add New User using V2 command - ")
+Exception: ERROR - During Add New User using V2 command - 
+2025-08-01 11:45:14,475 INFO cadastrar_usuario(76) Recebida tentativa de cadastro para: Matheus Rocha , CPF: 999.100.111-12
+2025-08-01 11:45:14,476 INFO cadastrar_usuario(98) Validação local bem-sucedida para o NOME: Matheus Rocha
+2025-08-01 11:46:56,634 INFO <module>(36) API DomingosAccess iniciada com sucesso.
+2025-08-01 11:47:23,951 INFO cadastrar_usuario(76) Recebida tentativa de cadastro para: Matheus Rocha , CPF: 999.100.111-12
+2025-08-01 11:47:23,951 INFO cadastrar_usuario(98) Validação local bem-sucedida para o NOME: Matheus Rocha
+2025-08-01 11:47:43,969 ERROR log_exception(875) Exception on / [POST]
+Traceback (most recent call last):
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\urllib3\connection.py", line 198, in _new_conn
+    sock = connection.create_connection(
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\urllib3\util\connection.py", line 85, in create_connection
+    raise err
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\urllib3\util\connection.py", line 73, in create_connection
+    sock.connect(sa)
+TimeoutError: timed out
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\urllib3\connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\urllib3\connectionpool.py", line 493, in _make_request
+    conn.request(
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\urllib3\connection.py", line 445, in request
+    self.endheaders()
+  File "C:\Users\wendel.santos\AppData\Local\Programs\Python\Python310\lib\http\client.py", line 1271, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "C:\Users\wendel.santos\AppData\Local\Programs\Python\Python310\lib\http\client.py", line 1031, in _send_output
+    self.send(msg)
+  File "C:\Users\wendel.santos\AppData\Local\Programs\Python\Python310\lib\http\client.py", line 969, in send
+    self.connect()
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\urllib3\connection.py", line 276, in connect
+    self.sock = self._new_conn()
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\urllib3\connection.py", line 207, in _new_conn
+    raise ConnectTimeoutError(
+urllib3.exceptions.ConnectTimeoutError: (<urllib3.connection.HTTPConnection object at 0x000001DE35866AD0>, 'Connection to 192.168.137.2 timed out. (connect timeout=20)')
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\requests\adapters.py", line 667, in send
+    resp = conn.urlopen(
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\urllib3\connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\urllib3\util\retry.py", line 519, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='192.168.137.2', port=80): Max retries exceeded with url: /cgi-bin/AccessUser.cgi?action=insertMulti (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x000001DE35866AD0>, 'Connection to 192.168.137.2 timed out. (connect timeout=20)'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\wendel.santos\Desktop\reconhecimento\Sistema\intelbras_api.py", line 58, in add_user_v2
+    result = requests.get(
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\requests\api.py", line 73, in get
+    return request("get", url, params=params, **kwargs)
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\requests\api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\requests\sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\requests\adapters.py", line 688, in send
+    raise ConnectTimeout(e, request=request)
+requests.exceptions.ConnectTimeout: HTTPConnectionPool(host='192.168.137.2', port=80): Max retries exceeded with url: /cgi-bin/AccessUser.cgi?action=insertMulti (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x000001DE35866AD0>, 'Connection to 192.168.137.2 timed out. (connect timeout=20)'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\flask_cors\extension.py", line 176, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "c:\Users\wendel.santos\Desktop\reconhecimento\app.py", line 102, in cadastrar_usuario
+    resultado = api.add_user_v2(
+  File "c:\Users\wendel.santos\Desktop\reconhecimento\Sistema\intelbras_api.py", line 65, in add_user_v2
+    raise Exception("ERROR - During Add New User using V2 command - ")
+Exception: ERROR - During Add New User using V2 command - 
+2025-08-01 11:48:07,154 INFO cadastrar_usuario(76) Recebida tentativa de cadastro para: Matheus Rocha , CPF: 999.100.111-12
+2025-08-01 11:48:07,154 INFO cadastrar_usuario(98) Validação local bem-sucedida para o NOME: Matheus Rocha
+2025-08-01 11:48:07,304 INFO cadastrar_usuario(111) Usuário 'Matheus Rocha' (ID: 5) criado no dispositivo. Redirecionando para captura.
+2025-08-01 11:48:20,989 INFO enviar_foto_dispositivo(195) Foto para o User ID 5 enviada com sucesso para o dispositivo.
+2025-08-13 09:28:57,949 INFO <module>(36) API DomingosAccess iniciada com sucesso.
+2025-08-13 09:36:45,909 INFO cadastrar_usuario(76) Recebida tentativa de cadastro para: teste, CPF: 111.111.111-11
+2025-08-13 09:36:45,926 WARNING cadastrar_usuario(93) Validação local falhou para o CPF: 111.111.111-11 e Matrícula: 222222222222.
+2025-08-13 09:37:20,335 INFO cadastrar_usuario(76) Recebida tentativa de cadastro para: Henrique Romano, CPF: 133.144.155-16
+2025-08-13 09:37:20,336 WARNING cadastrar_usuario(93) Validação local falhou para o CPF: 133.144.155-16 e Matrícula: 2024004.
+2025-08-13 09:39:10,337 INFO cadastrar_usuario(76) Recebida tentativa de cadastro para: Henrique Romano , CPF: 133.144.155-16
+2025-08-13 09:39:10,338 INFO cadastrar_usuario(98) Validação local bem-sucedida para o NOME: Henrique Romano
+2025-08-13 09:39:30,349 ERROR log_exception(875) Exception on / [POST]
+Traceback (most recent call last):
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\urllib3\connection.py", line 198, in _new_conn
+    sock = connection.create_connection(
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\urllib3\util\connection.py", line 85, in create_connection
+    raise err
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\urllib3\util\connection.py", line 73, in create_connection
+    sock.connect(sa)
+TimeoutError: timed out
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\urllib3\connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\urllib3\connectionpool.py", line 493, in _make_request
+    conn.request(
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\urllib3\connection.py", line 445, in request
+    self.endheaders()
+  File "C:\Users\wendel.santos\AppData\Local\Programs\Python\Python310\lib\http\client.py", line 1271, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "C:\Users\wendel.santos\AppData\Local\Programs\Python\Python310\lib\http\client.py", line 1031, in _send_output
+    self.send(msg)
+  File "C:\Users\wendel.santos\AppData\Local\Programs\Python\Python310\lib\http\client.py", line 969, in send
+    self.connect()
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\urllib3\connection.py", line 276, in connect
+    self.sock = self._new_conn()
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\urllib3\connection.py", line 207, in _new_conn
+    raise ConnectTimeoutError(
+urllib3.exceptions.ConnectTimeoutError: (<urllib3.connection.HTTPConnection object at 0x000002075C7721D0>, 'Connection to 192.168.137.2 timed out. (connect timeout=20)')
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\requests\adapters.py", line 667, in send
+    resp = conn.urlopen(
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\urllib3\connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\urllib3\util\retry.py", line 519, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='192.168.137.2', port=80): Max retries exceeded with url: /cgi-bin/AccessUser.cgi?action=insertMulti (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x000002075C7721D0>, 'Connection to 192.168.137.2 timed out. (connect timeout=20)'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\wendel.santos\Desktop\reconhecimento\Sistema\intelbras_api.py", line 58, in add_user_v2
+    result = requests.get(
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\requests\api.py", line 73, in get
+    return request("get", url, params=params, **kwargs)
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\requests\api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\requests\sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\requests\adapters.py", line 688, in send
+    raise ConnectTimeout(e, request=request)
+requests.exceptions.ConnectTimeout: HTTPConnectionPool(host='192.168.137.2', port=80): Max retries exceeded with url: /cgi-bin/AccessUser.cgi?action=insertMulti (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x000002075C7721D0>, 'Connection to 192.168.137.2 timed out. (connect timeout=20)'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\flask_cors\extension.py", line 176, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\wendel.santos\Desktop\reconhecimento\env\lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "c:\Users\wendel.santos\Desktop\reconhecimento\app.py", line 102, in cadastrar_usuario
+    resultado = api.add_user_v2(
+  File "c:\Users\wendel.santos\Desktop\reconhecimento\Sistema\intelbras_api.py", line 65, in add_user_v2
+    raise Exception("ERROR - During Add New User using V2 command - ")
+Exception: ERROR - During Add New User using V2 command - 
+2025-08-13 09:40:00,363 INFO cadastrar_usuario(76) Recebida tentativa de cadastro para: Henrique Romano , CPF: 133.144.155-16
+2025-08-13 09:40:00,363 INFO cadastrar_usuario(98) Validação local bem-sucedida para o NOME: Henrique Romano
+2025-08-13 09:40:00,493 INFO cadastrar_usuario(111) Usuário 'Henrique Romano' (ID: 7) criado no dispositivo. Redirecionando para captura.
+2025-08-13 09:44:12,065 INFO cadastrar_usuario(76) Recebida tentativa de cadastro para: Henrique Romano , CPF: 133.144.155-16
+2025-08-13 09:44:12,070 WARNING cadastrar_usuario(93) Validação local falhou para o CPF: 133.144.155-16 e Matrícula: 2024004.
+2025-08-13 09:46:31,124 INFO cadastrar_usuario(76) Recebida tentativa de cadastro para: Wendel Samora , CPF: 111.222.333-44
+2025-08-13 09:46:31,124 INFO cadastrar_usuario(98) Validação local bem-sucedida para o NOME: Wendel Samora
+2025-08-13 09:46:31,174 INFO cadastrar_usuario(111) Usuário 'Wendel Samora' (ID: 8) criado no dispositivo. Redirecionando para captura.
+2025-08-13 09:47:49,226 INFO cadastrar_usuario(76) Recebida tentativa de cadastro para: Wendel Samora , CPF: 111.222.333-44
+2025-08-13 09:47:49,227 INFO cadastrar_usuario(98) Validação local bem-sucedida para o NOME: Wendel Samora
+2025-08-13 09:47:49,301 INFO cadastrar_usuario(111) Usuário 'Wendel Samora' (ID: 9) criado no dispositivo. Redirecionando para captura.
+2025-08-13 09:48:11,156 INFO cadastrar_usuario(76) Recebida tentativa de cadastro para: Wendel Samora , CPF: 111.222.333-44
+2025-08-13 09:48:11,158 WARNING cadastrar_usuario(93) Validação local falhou para o CPF: 111.222.333-44 e Matrícula: 2024001.
+2025-08-13 10:18:53,589 INFO cadastrar_usuario(76) Recebida tentativa de cadastro para: Wendel Samora , CPF: 111.222.333-44
+2025-08-13 10:18:53,590 WARNING cadastrar_usuario(93) Validação local falhou para o CPF: 111.222.333-44 e Matrícula: 2024001.
+2025-08-13 10:19:50,726 INFO cadastrar_usuario(76) Recebida tentativa de cadastro para: Wendel Samora, CPF: 111.222.333-44
+2025-08-13 10:19:50,728 WARNING cadastrar_usuario(93) Validação local falhou para o CPF: 111.222.333-44 e Matrícula: 2024001.

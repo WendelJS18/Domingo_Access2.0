@@ -51,7 +51,7 @@ def gerar_user_id():
 
     with user_id_lock:
         if not os.path.exists(id_path):
-            with open(id_path, "w") as f:
+            with open(id_path, "w") as f: 
                 f.write("1")
 
         with open(id_path, "r") as f:

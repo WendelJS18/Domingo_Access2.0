@@ -26,11 +26,11 @@ my_handler.setLevel(logging.INFO)
 app.logger.addHandler(my_handler)
 app.logger.setLevel(logging.INFO)
 
-DEVICE_IP = '192.168.137.2'
+DEVICE_IP = '*'
 USERNAME = 'admin'
-PASSWORD = 'Esdo2025'
+PASSWORD = '*'
 
-app.secret_key = 's3cr3t_k3y_f0r_fl4sk'
+app.secret_key = '*'
 api = IntelbrasAccessControlAPI(DEVICE_IP, USERNAME, PASSWORD)
 
 app.logger.info("API DomingosAccess iniciada com sucesso.")
